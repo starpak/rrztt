@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#f5f5f5">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <title>若若子 · rrztt.site</title>
+  <meta name="description" content="若若子天团官网 · 一个还在练习唱歌、努力不冷场的个人势 VUP。">
+  <meta name="keywords" content="若若子，VUP，虚拟主播，Bilibili，直播，唱歌，杂谈，游戏">
+  <meta name="author" content="若若子天团">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="若若子 · rrztt.site">
+  <meta property="og:description" content="若若子天团官网 · 一个还在练习唱歌、努力不冷场的个人势 VUP。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://rrztt.site">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐱</text></svg>">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="preconnect" href="https://unpkg.com">
+  <link rel="preload" href="css/style.css?v=20260808" as="style">
+  <link rel="preload" href="assets/ruoruozi-portrait.png" as="image" fetchpriority="high">
+  <link rel="stylesheet" href="css/style.css?v=20260808">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.1/dist/index.global.js" defer></script>
+  <script src="https://unpkg.com/lucide@1.8.0/dist/umd/lucide.min.js" defer></script>
+  <style type="text/tailwindcss">
+    @theme inline {
+      --color-background: var(--rrz-background);
+      --color-foreground: var(--rrz-foreground);
+      --color-card: var(--rrz-card);
+      --color-card-foreground: var(--rrz-card-foreground);
+      --color-popover: var(--rrz-popover);
+      --color-popover-foreground: var(--rrz-popover-foreground);
+      --color-primary: var(--rrz-primary);
+      --color-primary-foreground: var(--rrz-primary-foreground);
+      --color-secondary: var(--rrz-secondary);
+      --color-secondary-foreground: var(--rrz-secondary-foreground);
+      --color-muted: var(--rrz-muted);
+      --color-muted-foreground: var(--rrz-muted-foreground);
+      --color-accent: var(--rrz-accent);
+      --color-accent-foreground: var(--rrz-accent-foreground);
+      --color-destructive: var(--rrz-destructive);
+      --color-destructive-foreground: var(--rrz-destructive-foreground);
+      --color-border: var(--rrz-border);
+      --color-input: var(--rrz-input);
+      --color-ring: var(--rrz-ring);
+      --radius-sm: var(--rrz-radius-sm);
+      --radius-md: var(--rrz-radius-md);
+      --radius-lg: var(--rrz-radius-lg);
+      --radius-xl: var(--rrz-radius-xl);
+    }
+    @layer base {
+      body { background: var(--rrz-background); color: var(--rrz-foreground); }
+    }
+  </style>
+</head>
+<body class="min-h-screen font-sans antialiased">
+
+  <!-- 加载动画（右侧竖向进度条 - 严格靠右） -->
+  <div id="rrz-loader">
+    <div class="rrz-loader-percent">0%</div>
+    <div class="rrz-loader-vertical-bar">
+      <div class="rrz-loader-progress"></div>
+    </div>
+  </div>
+
+  <!-- 背景粒子 -->
+  <div class="rrz-bg-fx"><i></i><i></i><i></i><i></i><i></i></div>
+
+  <!-- 公共导航 + Footer 始终渲染，SPA 视图仅切换中间的 rrz-view -->
+  <main class="rrz-spa-wrap">
+    <nav class="w-full border-b rrz-site-nav" style="border-color: var(--rrz-border);">
+      <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 md:px-6 md:py-4">
+        <div class="flex items-center gap-3">
+          <!-- 汉堡菜单按钮（移动端） -->
+          <button id="rrz-menu-toggle" class="md:hidden p-2 -ml-2" aria-label="菜单">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+          <a href="/" data-rrz-route class="rrz-logo text-sm font-semibold tracking-wide" style="color: var(--rrz-foreground);">rrztt.site</a>
+        </div>
+        <!-- 桌面端导航 -->
+        <div class="hidden md:flex items-center gap-6 text-sm" style="color: var(--rrz-muted-foreground);">
+          <a href="/" data-rrz-route class="rrz-link rrz-nav-link">首页</a>
+          <a href="/about" data-rrz-route class="rrz-link rrz-nav-link">关于</a>
+          <a href="/live" data-rrz-route class="rrz-link rrz-nav-link">直播</a>
+          <a href="/music" data-rrz-route class="rrz-link rrz-nav-link">音乐</a>
+          <a href="/changelog" data-rrz-route class="rrz-link rrz-nav-link">更新日志</a>
+        </div>
+      </div>
+      <!-- 移动端汉堡菜单 -->
+      <div id="rrz-mobile-menu" class="rrz-mobile-menu hidden md:hidden border-t" style="border-color: var(--rrz-border); background: var(--rrz-card);">
+        <div class="flex flex-col px-4 py-3 gap-1">
+          <a href="/" data-rrz-route class="rrz-link rrz-mobile-link py-2 text-sm" style="color: var(--rrz-foreground);">首页</a>
+          <a href="/about" data-rrz-route class="rrz-link rrz-mobile-link py-2 text-sm" style="color: var(--rrz-foreground);">关于</a>
+          <a href="/live" data-rrz-route class="rrz-link rrz-mobile-link py-2 text-sm" style="color: var(--rrz-foreground);">直播</a>
+          <a href="/music" data-rrz-route class="rrz-link rrz-mobile-link py-2 text-sm" style="color: var(--rrz-foreground);">音乐</a>
+          <a href="/changelog" data-rrz-route class="rrz-link rrz-mobile-link py-2 text-sm" style="color: var(--rrz-foreground);">更新日志</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ========== 视图 1：首页 (/) ========== -->
+    <section id="rrz-view-home" class="rrz-view rrz-view-active" data-rrz-view="home">
+      <section class="mx-auto grid max-w-6xl gap-8 px-6 pt-10 pb-4 md:grid-cols-2 md:pt-16 md:pb-6">
+        <div class="flex flex-col justify-center">
+          <p class="rrz-badge mb-4">若若子天团 · 官网</p>
+          <h1 class="rrz-balance mb-4 text-5xl font-semibold leading-tight tracking-tight md:text-7xl" style="color: var(--rrz-foreground);" data-rrz-split>若若子</h1>
+          <p class="rrz-balance mb-6 text-base md:text-lg" style="color: var(--rrz-muted-foreground);">一个还在练习唱歌、努力不冷场的个人势 VUP。</p>
+          <div class="mb-8 flex flex-wrap gap-2">
+            <span class="rrz-tag rounded-sm px-3 py-1 text-xs" style="color: var(--rrz-foreground);">声音好听</span>
+            <span class="rrz-tag rounded-sm px-3 py-1 text-xs" style="color: var(--rrz-foreground);">唱歌一般</span>
+            <span class="rrz-tag rounded-sm px-3 py-1 text-xs" style="color: var(--rrz-foreground);">开播不到十天</span>
+          </div>
+          <a href="/live" data-rrz-route class="rrz-link rrz-cta group inline-flex items-center gap-2 self-start border-b pb-1 text-sm font-medium" style="color: var(--rrz-foreground); border-color: var(--rrz-border);">
+            看看直播信息
+            <svg class="rrz-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+        <div class="rrz-portrait-wrap items-end justify-center md:justify-end" id="rrz-portrait-click">
+          <!-- 多层光环 -->
+          <div class="rrz-portrait-aura"></div>
+          <div class="rrz-portrait-aura rrz-aura-2"></div>
+          <div class="rrz-portrait-aura rrz-aura-3"></div>
+          <img src="assets/ruoruozi-portrait.png" alt="若若子半身照" class="rrz-portrait h-full max-h-[560px] w-auto max-w-full object-contain" />
+        </div>
+      </section>
+
+      <div class="rrz-divider mx-auto max-w-6xl"></div>
+
+      <!-- 跑马灯 -->
+      <div class="rrz-marquee">
+        <div class="rrz-marquee__track">
+          <span>杂谈 <b>·</b> 游戏 <b>·</b> 清唱 <b>·</b> 随机掉落 <b>·</b> 个人势 VUP <b>·</b></span>
+          <span>杂谈 <b>·</b> 游戏 <b>·</b> 清唱 <b>·</b> 随机掉落 <b>·</b> 个人势 VUP <b>·</b></span>
+          <span>杂谈 <b>·</b> 游戏 <b>·</b> 清唱 <b>·</b> 随机掉落 <b>·</b> 个人势 VUP <b>·</b></span>
+          <span>杂谈 <b>·</b> 游戏 <b>·</b> 清唱 <b>·</b> 随机掉落 <b>·</b> 个人势 VUP <b>·</b></span>
+        </div>
+      </div>
+
+      <section id="about" class="mx-auto max-w-6xl px-6 py-10 md:py-16">
+        <div class="grid gap-6 md:grid-cols-4">
+          <div class="md:col-span-1 rrz-reveal" data-rrz-variant="left">
+            <h2 class="rrz-balance text-2xl font-medium tracking-tight" style="color: var(--rrz-foreground);">关于</h2>
+          </div>
+          <div class="md:col-span-3 rrz-reveal" data-rrz-variant="right">
+            <p class="rrz-balance mb-4 text-base leading-relaxed" style="color: var(--rrz-foreground);">
+              若若子是 rrztt.site 的新人虚拟主播，目前还在熟悉直播间、练习歌单和寻找不尴尬的聊天话题。直播内容以杂谈、轻量游戏和偶尔的清唱为主。
+            </p>
+            <p class="rrz-balance text-base leading-relaxed" style="color: var(--rrz-muted-foreground);">
+              不追求热闹，只希望每一次开播都比上一次自然一点。欢迎路过、点歌、或者只是发一条弹幕。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div class="rrz-divider mx-auto max-w-6xl"></div>
+
+      <section id="live-info" class="mx-auto max-w-6xl px-6 py-10 md:py-16">
+        <div class="grid gap-6 md:grid-cols-4">
+          <div class="md:col-span-1 rrz-reveal" data-rrz-variant="left">
+            <h2 class="rrz-balance text-2xl font-medium tracking-tight" style="color: var(--rrz-foreground);">直播信息</h2>
+          </div>
+          <div class="md:col-span-3 space-y-6">
+            <div class="rrz-reveal flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between border-b pb-4" style="border-color: var(--rrz-border);">
+              <div>
+                <p class="text-xs" style="color: var(--rrz-muted-foreground);">直播平台</p>
+                <p class="text-base font-medium" style="color: var(--rrz-foreground);">Bilibili · 若若子Official</p>
+              </div>
+              <a href="/live" data-rrz-route class="rrz-link rrz-cta self-start text-sm" style="color: var(--rrz-foreground);">
+                前往直播页
+                <svg class="rrz-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+              </a>
+            </div>
+            <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+              <div class="rrz-tag rounded-sm p-3 rrz-reveal" data-rrz-delay="0">
+                <p class="mb-1 text-xs" style="color: var(--rrz-muted-foreground);">直播时间</p>
+                <p class="text-sm font-medium" style="color: var(--rrz-foreground);">随机掉落</p>
+                <p class="text-xs" style="color: var(--rrz-muted-foreground);">不固定日期，随缘开播</p>
+              </div>
+              <div class="rrz-tag rounded-sm p-3 rrz-reveal" data-rrz-delay="100">
+                <p class="mb-1 text-xs" style="color: var(--rrz-muted-foreground);">开播提醒</p>
+                <p class="text-sm font-medium" style="color: var(--rrz-foreground);">关注 B 站账号</p>
+                <p class="text-xs" style="color: var(--rrz-muted-foreground);">开播前动态通知</p>
+              </div>
+              <div class="rrz-tag rounded-sm p-3 rrz-reveal" data-rrz-delay="200">
+                <p class="mb-1 text-xs" style="color: var(--rrz-muted-foreground);">粉丝 QQ 群</p>
+                <p class="text-sm font-medium" style="color: var(--rrz-foreground);">1104792192</p>
+                <p class="text-xs" style="color: var(--rrz-muted-foreground);">欢迎加群聊天</p>
+              </div>
+              <div class="rrz-tag rounded-sm p-3 rrz-reveal" data-rrz-delay="300">
+                <p class="mb-1 text-xs" style="color: var(--rrz-muted-foreground);">主要内容</p>
+                <p class="text-sm font-medium" style="color: var(--rrz-foreground);">杂谈 / 游戏 / 清唱</p>
+                <p class="text-xs" style="color: var(--rrz-muted-foreground);">偶尔练歌</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+    <!-- ========== 视图 1 END：首页 ========== -->
+
+    <!-- ========== 视图 2：关于 (/about) ========== -->
+    <section id="rrz-view-about" class="rrz-view" data-rrz-view="about">
+      <section class="mx-auto max-w-6xl px-6 py-12 md:py-20">
+        <div class="grid gap-6 md:grid-cols-4">
+          <div class="md:col-span-1 rrz-reveal" data-rrz-variant="left">
+            <p class="rrz-badge mb-4">about</p>
+            <h1 class="rrz-balance text-3xl md:text-4xl font-medium tracking-tight" style="color: var(--rrz-foreground);" data-rrz-split>关于</h1>
+          </div>
+          <div class="md:col-span-3 space-y-6">
+            <p class="rrz-balance text-base leading-relaxed rrz-reveal" data-rrz-variant="right" style="color: var(--rrz-foreground);">
+              若若子是 rrztt.site 的新人虚拟主播，目前还在熟悉直播间、练习歌单和寻找不尴尬的聊天话题。直播内容以杂谈、轻量游戏和偶尔的清唱为主。
+            </p>
+            <p class="rrz-balance text-base leading-relaxed rrz-reveal" data-rrz-variant="right" data-rrz-delay="120" style="color: var(--rrz-muted-foreground);">
+              不追求热闹，只希望每一次开播都比上一次自然一点。欢迎路过、点歌、或者只是发一条弹幕。
+            </p>
+            <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              <div class="rrz-tag rounded-sm p-3 rrz-reveal" data-rrz-variant="zoom" data-rrz-delay="0">
+                <p class="mb-1 text-xs" style="color: var(--rrz-muted-foreground);">身份</p>
+                <p class="text-sm font-medium" style="color: var(--rrz-foreground);">个人势 VUP</p>
+                <p class="text-xs" style="color: var(--rrz-muted-foreground);">努力不冷场中</p>
+              </div>
+              <div class="rrz-tag rounded-sm p-3 rrz-reveal" data-rrz-variant="zoom" data-rrz-delay="120">
+                <p class="mb-1 text-xs" style="color: var(--rrz-muted-foreground);">直播内容</p>
+                <p class="text-sm font-medium" style="color: var(--rrz-foreground);">杂谈 / 游戏 / 清唱</p>
+                <p class="text-xs" style="color: var(--rrz-muted-foreground);">偶尔练歌</p>
+              </div>
+              <div class="rrz-tag rounded-sm p-3 rrz-reveal" data-rrz-variant="zoom" data-rrz-delay="240">
+                <p class="mb-1 text-xs" style="color: var(--rrz-muted-foreground);">粉丝群</p>
+                <p class="text-sm font-medium" style="color: var(--rrz-foreground);">1104792192</p>
+                <p class="text-xs" style="color: var(--rrz-muted-foreground);">欢迎加群聊天</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="rrz-divider mx-auto max-w-6xl"></div>
+
+      <section class="mx-auto max-w-6xl px-6 py-10 md:py-16">
+        <div class="grid gap-6 md:grid-cols-4">
+          <div class="md:col-span-1 rrz-reveal" data-rrz-variant="left">
+            <h2 class="rrz-balance text-2xl font-medium tracking-tight" style="color: var(--rrz-foreground);">想说的话</h2>
+          </div>
+          <div class="md:col-span-3 rrz-reveal" data-rrz-variant="right">
+            <p class="rrz-balance text-base leading-relaxed" style="color: var(--rrz-muted-foreground);">
+              虽然刚开播不到十天，还很生疏，但每一次开播都会比上一次自然一点点。如果你路过直播间，留一条弹幕、点一首歌，就是给若若子最大的鼓励。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div class="rrz-divider mx-auto max-w-6xl"></div>
+
+      <section class="mx-auto max-w-6xl px-6 py-10 md:py-16">
+        <div class="grid gap-6 md:grid-cols-4">
+          <div class="md:col-span-1 rrz-reveal" data-rrz-variant="left">
+            <h2 class="rrz-balance text-2xl font-medium tracking-tight" style="color: var(--rrz-foreground);">找到若若子</h2>
+          </div>
+          <div class="md:col-span-3">
+            <div class="rrz-sns">
+              <a href="https://space.bilibili.com/520292668" target="_blank" rel="noopener" class="rrz-reveal" data-rrz-variant="right" data-rrz-delay="0">
+                <div class="rrz-sns-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="3"/><path d="M8 11v3M16 11v3M10 3l2 3M14 3l-2 3"/></svg>
+                </div>
+                <div>
+                  <p class="rrz-sns-title">Bilibili · 若若子Official</p>
+                  <p class="rrz-sns-desc">关注账号获取开播动态</p>
+                </div>
+              </a>
+              <a href="https://qm.qq.com/q/1104792192" target="_blank" rel="noopener" class="rrz-reveal" data-rrz-variant="right" data-rrz-delay="120">
+                <div class="rrz-sns-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                </div>
+                <div>
+                  <p class="rrz-sns-title">粉丝 QQ 群 1104792192</p>
+                  <p class="rrz-sns-desc">欢迎加群聊天唠嗑</p>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 贡献者名单按钮 -->
+      <div class="rrz-divider mx-auto max-w-6xl"></div>
+
+      <section class="mx-auto max-w-6xl px-6 py-10 md:py-16">
+        <div class="flex justify-center">
+          <a href="/contributors" data-rrz-route class="rrz-link rrz-cta group inline-flex items-center gap-2 border-b pb-1 text-sm font-medium" style="color: var(--rrz-foreground); border-color: var(--rrz-border);">
+            查看贡献者
+            <svg class="rrz-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </section>
+    </section>
+    <!-- ========== 视图 2 END：关于 ========== -->
+
+    <!-- ========== 视图 3：直播 (/live) ========== -->
+    <section id="rrz-view-live" class="rrz-view" data-rrz-view="live">
+      <section class="mx-auto max-w-6xl px-6 py-12 md:py-20">
+        <div class="grid gap-6 md:grid-cols-4">
+          <div class="md:col-span-1 rrz-reveal" data-rrz-variant="left">
+            <p class="rrz-badge mb-4"><span class="rrz-live-dot"></span>live</p>
+            <h1 class="rrz-balance text-3xl md:text-4xl font-medium tracking-tight" style="color: var(--rrz-foreground);" data-rrz-split>直播间</h1>
+          </div>
+          <div class="md:col-span-3 space-y-6">
+            <p class="rrz-balance text-base leading-relaxed rrz-reveal" data-rrz-variant="right" style="color: var(--rrz-muted-foreground);">
+              这里会接入若若子的 B 站直播间。在正式链接补上之前，可以先去 B 站搜索「若若子Official」关注动态。
+            </p>
+            <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              <div class="rrz-tag rounded-sm p-3 rrz-reveal" data-rrz-variant="zoom" data-rrz-delay="0">
+                <p class="mb-1 text-xs" style="color: var(--rrz-muted-foreground);">平台</p>
+                <p class="text-sm font-medium" style="color: var(--rrz-foreground);">Bilibili</p>
+                <p class="text-xs" style="color: var(--rrz-muted-foreground);">若若子Official</p>
+              </div>
+              <div class="rrz-tag rounded-sm p-3 rrz-reveal" data-rrz-variant="zoom" data-rrz-delay="120">
+                <p class="mb-1 text-xs" style="color: var(--rrz-muted-foreground);">直播时间</p>
+                <p class="text-sm font-medium" style="color: var(--rrz-foreground);">随机掉落</p>
+                <p class="text-xs" style="color: var(--rrz-muted-foreground);">关注动态获取通知</p>
+              </div>
+              <div class="rrz-tag rounded-sm p-3 rrz-reveal" data-rrz-variant="zoom" data-rrz-delay="240">
+                <p class="mb-1 text-xs" style="color: var(--rrz-muted-foreground);">粉丝 QQ 群</p>
+                <p class="text-sm font-medium" style="color: var(--rrz-foreground);">1104792192</p>
+                <p class="text-xs" style="color: var(--rrz-muted-foreground);">开播群内也会喊</p>
+              </div>
+            </div>
+            <a href="https://space.bilibili.com/520292668" target="_blank" rel="noopener" class="rrz-link rrz-cta inline-flex items-center gap-2 self-start border-b pb-1 text-sm font-medium rrz-reveal" data-rrz-variant="right" data-rrz-delay="200" style="color: var(--rrz-foreground); border-color: var(--rrz-border);">
+              前往 B 站主页
+              <svg class="rrz-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <div class="rrz-divider mx-auto max-w-6xl"></div>
+
+      <section class="mx-auto max-w-6xl px-6 py-10 md:py-16">
+        <!-- 直播状态卡片：由 JS 实时查询 B 站 API -->
+        <div id="rrz-live-status" class="rrz-reveal" data-rrz-variant="flip">
+          <div class="rounded-xl border p-8 text-center" style="border-color: var(--rrz-border); background: var(--rrz-card);">
+            <!-- 加载中 -->
+            <div id="rrz-live-loading" class="rrz-live-state">
+              <div class="rrz-live-spinner"></div>
+              <p class="rrz-balance mt-4 text-sm" style="color: var(--rrz-muted-foreground);">正在查询直播状态…</p>
+            </div>
+            <!-- 在直播 -->
+            <div id="rrz-live-on" class="rrz-live-state" style="display:none;">
+              <div class="rrz-live-badge">
+                <span class="rrz-live-dot"></span>
+                <span>LIVE</span>
+              </div>
+              <p class="rrz-balance mt-4 text-lg font-medium" style="color: var(--rrz-foreground);">当前正在直播～</p>
+              <p id="rrz-live-title" class="rrz-balance mt-1 text-sm" style="color: var(--rrz-muted-foreground);"></p>
+              <a id="rrz-live-link" href="https://live.bilibili.com/520292668" target="_blank" rel="noopener" class="rrz-btn mt-6">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                前往直播间
+              </a>
+            </div>
+            <!-- 未直播 -->
+            <div id="rrz-live-off" class="rrz-live-state" style="display:none;">
+              <div class="rrz-live-badge rrz-live-badge-off">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <span>未开播</span>
+              </div>
+              <p class="rrz-balance mt-4 text-lg font-medium" style="color: var(--rrz-foreground);">直播还在准备中</p>
+              <p class="rrz-balance mt-2 text-sm" style="color: var(--rrz-muted-foreground);">若若子正在熟悉直播间、练习歌单，敬请期待。开播前会在 B 站动态和粉丝群通知。</p>
+              <a href="https://space.bilibili.com/520292668" target="_blank" rel="noopener" class="rrz-btn rrz-ghost mt-6">
+                关注 B 站主页
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+    <!-- ========== 视图 3 END：直播 ========== -->
+
+    <!-- ========== 视图 4：音乐 (/music) ========== -->
+    <section id="rrz-view-music" class="rrz-view" data-rrz-view="music">
+      <section class="mx-auto max-w-6xl px-6 py-12 md:py-20">
+        <div class="grid gap-6 md:grid-cols-4">
+          <div class="md:col-span-1 rrz-reveal" data-rrz-variant="left">
+            <p class="rrz-badge mb-4">music</p>
+            <h1 class="rrz-balance text-3xl md:text-4xl font-medium tracking-tight" style="color: var(--rrz-foreground);" data-rrz-split>若若子的音乐</h1>
+          </div>
+          <div class="md:col-span-3 space-y-6">
+            <p class="rrz-balance text-base leading-relaxed rrz-reveal" data-rrz-variant="right" style="color: var(--rrz-muted-foreground);">
+              这里收录了群友们为若若子创作的原创音乐。
+            </p>
+
+            <!-- 歌曲列表 - 网易云风格 -->
+            <div class="space-y-3">
+              <!-- 歌曲 1：HHmcME 作品 -->
+              <div class="rrz-reveal rrz-song-item" data-rrz-variant="right" data-rrz-delay="0">
+                <div class="rrz-song-card flex items-center gap-4 p-3 rounded-lg border transition-all duration-300 hover:shadow-lg" style="border-color: var(--rrz-border); background: var(--rrz-card);">
+                  <!-- 专辑封面 -->
+                  <div class="rrz-song-cover flex-shrink-0 w-14 h-14 rounded-lg overflow-hidden shadow-md" style="background: linear-gradient(135deg, #fbb6c9 0%, #a78bfa 100%);">
+                    <svg class="w-full h-full p-3" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                  </div>
+                  <!-- 歌曲信息 -->
+                  <div class="flex-1 min-w-0">
+                    <h3 class="text-base font-medium truncate" style="color: var(--rrz-foreground);">RRZLIKE-YOU~</h3>
+                    <p class="text-xs truncate" style="color: var(--rrz-muted-foreground);">HHmcME（群友专属）</p>
+                  </div>
+                  <!-- 播放控制 -->
+                  <div class="flex-shrink-0">
+                    <button class="rrz-play-btn w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110" style="background: linear-gradient(135deg, #fbb6c9 0%, #a78bfa 100%); color: white;">
+                      <svg class="w-5 h-5 play-icon" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                      <svg class="w-5 h-5 pause-icon hidden" viewBox="0 0 24 24" fill="currentColor" stroke="none"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+                    </button>
+                  </div>
+                  <!-- 隐藏的实际音频元素 -->
+                  <audio id="rrz-audio-0" class="hidden" preload="none">
+                    <source src="https://cdn.hailuoai.com/prod/2026-08-08-13/moss-audio/user_music/1786166047915393669-428489832661272.mp3?filename=RRZLIKE-YOU_no-watermark.mp3" type="audio/mpeg">
+                  </audio>
+                </div>
+              </div>
+
+              <!-- 更多歌曲占位 -->
+              <div class="rrz-reveal rrz-song-item" data-rrz-variant="right" data-rrz-delay="120">
+                <div class="flex items-center justify-center p-8 rounded-lg border border-dashed" style="border-color: var(--rrz-border); color: var(--rrz-muted-foreground);">
+                  <div class="text-center">
+                    <svg class="mx-auto mb-3" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>
+                    <p class="text-sm">更多群友作品敬请期待...</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+    </section>
+    <!-- ========== 视图 4 END：音乐 ========== -->
+
+    <!-- ========== 视图 5：更新日志 (/changelog) ========== -->
+    <section id="rrz-view-changelog" class="rrz-view" data-rrz-view="changelog">
+      <section class="mx-auto max-w-6xl px-6 py-12 md:py-20">
+        <div class="grid gap-6 md:grid-cols-4">
+          <div class="md:col-span-1 rrz-reveal" data-rrz-variant="left">
+            <p class="rrz-badge mb-4">changelog</p>
+            <h1 class="rrz-balance text-3xl md:text-4xl font-medium tracking-tight" style="color: var(--rrz-foreground);" data-rrz-split>更新日志</h1>
+          </div>
+          <div class="md:col-span-3 space-y-8">
+            
+            <!-- v1.0.9 -->
+            <div class="rrz-reveal" data-rrz-variant="right" data-rrz-delay="0">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="rrz-version-tag">v1.0.9</span>
+                <span class="text-xs" style="color: var(--rrz-muted-foreground);">最新</span>
+              </div>
+              <ul class="space-y-2">
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>贡献者名单中 HHmcME 标注为"网站建造者"</span>
+                </li>
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>加载进度条紧贴屏幕左侧，贯穿全屏高度 (0 → 100vh)</span>
+                </li>
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>百分比数字跟随进度点从上向下移动</span>
+                </li>
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>修复音乐播放器暂停 Bug：点击暂停不再重新播放，支持继续播放</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="rrz-divider"></div>
+
+            <!-- v1.0.7 -->
+            <div class="rrz-reveal" data-rrz-variant="right" data-rrz-delay="0">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="rrz-version-tag">v1.0.7</span>
+              </div>
+              <ul class="space-y-2">
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>重构加载页面动画，移除 Logo 图标，改为屏幕左侧竖向进度条设计</span>
+                </li>
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>进度条从顶部向下延伸，右侧实时显示百分比数值（0% → 100%）</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="rrz-divider"></div>
+
+            <!-- v1.0.6 -->
+            <div class="rrz-reveal" data-rrz-variant="right" data-rrz-delay="0">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="rrz-version-tag">v1.0.6</span>
+              </div>
+              <ul class="space-y-2">
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>新增贡献者名单页面，可在"关于"页面底部查看</span>
+                </li>
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>添加首位贡献者 HHmcME（群友专属音乐创作）</span>
+                </li>
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>修复背景音乐与歌曲播放器互斥问题（播放歌曲自动暂停 BGM，播放 BGM 自动暂停歌曲）</span>
+                </li>
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>修复播放器暂停按钮点击后重新播放的 Bug</span>
+                </li>
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>优化音频预加载策略，改为 preload="none"节省流量</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="rrz-divider"></div>
+
+            <!-- v1.0.5 -->
+            <div class="rrz-reveal" data-rrz-variant="right" data-rrz-delay="0">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="rrz-version-tag">v1.0.5</span>
+              </div>
+              <ul class="space-y-2">
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>重写音乐播放器核心逻辑，彻底修复点击无响应问题</span>
+                </li>
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>移除音频预加载，改为点击播放时才加载，解决加载卡死问题</span>
+                </li>
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>优化悬浮动画表达，基于卡片自身 transform 浮动，不再依赖全局锚点偏移</span>
+                </li>
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>完善播放/暂停状态同步，确保图标与播放状态一致</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="rrz-divider"></div>
+
+            <!-- v1.0.4 -->
+            <div class="rrz-reveal" data-rrz-variant="right" data-rrz-delay="0">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="rrz-version-tag">v1.0.4</span>
+              </div>
+              <ul class="space-y-2">
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>音乐页面全新改版，采用网易云音乐风格设计</span>
+                </li>
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>新增播放/暂停按钮，支持点击切换播放状态</span>
+                </li>
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>实现歌曲互斥播放，播放新曲时自动暂停当前歌曲</span>
+                </li>
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>优化卡片悬停效果，添加渐变光晕和浮动动画</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="rrz-divider"></div>
+
+            <!-- v1.0.3 -->
+            <div class="rrz-reveal" data-rrz-variant="right" data-rrz-delay="0">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="rrz-version-tag">v1.0.3</span>
+              </div>
+              <ul class="space-y-2">
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>新增音乐页面，收录群友原创音乐作品</span>
+                </li>
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>首支单曲《RRZLIKE-YOU~》由 HHmcME 创作</span>
+                </li>
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>优化播放器交互，支持多歌曲互斥播放</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="rrz-divider"></div>
+
+            <!-- v1.0.2 -->
+            <div class="rrz-reveal" data-rrz-variant="right" data-rrz-delay="0">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="rrz-version-tag">v1.0.2</span>
+              </div>
+              <ul class="space-y-2">
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>添加了音乐播放器，支持背景音乐播放/暂停</span>
+                </li>
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>定义了默认背景音乐曲目</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="rrz-divider"></div>
+
+            <!-- v1.0.1 -->
+            <div class="rrz-reveal" data-rrz-variant="right" data-rrz-delay="120">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="rrz-version-tag">v1.0.1</span>
+              </div>
+              <ul class="space-y-2">
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>加强了官网的特效与动画效果</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="rrz-divider"></div>
+
+            <!-- v1.0.0 -->
+            <div class="rrz-reveal" data-rrz-variant="right" data-rrz-delay="240">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="rrz-version-tag">v1.0.0</span>
+              </div>
+              <ul class="space-y-2">
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>初具人形 - 官网首个正式版本发布</span>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+      </section>
+    </section>
+    <!-- ========== 视图 5 END：更新日志 ========== -->
+
+    <!-- ========== 视图 6：贡献者名单 (/contributors) ========== -->
+    <section id="rrz-view-contributors" class="rrz-view" data-rrz-view="contributors">
+      <section class="mx-auto max-w-6xl px-6 py-12 md:py-20">
+        <div class="grid gap-6 md:grid-cols-4">
+          <div class="md:col-span-1 rrz-reveal" data-rrz-variant="left">
+            <p class="rrz-badge mb-4">contributors</p>
+            <h1 class="rrz-balance text-3xl md:text-4xl font-medium tracking-tight" style="color: var(--rrz-foreground);" data-rrz-split>贡献者名单</h1>
+          </div>
+          <div class="md:col-span-3 space-y-6">
+            <p class="rrz-balance text-base leading-relaxed rrz-reveal" data-rrz-variant="right" style="color: var(--rrz-muted-foreground);">
+              感谢所有为若若子官网做出贡献的朋友们！<br>
+              <span class="text-xs" style="color: var(--rrz-muted-foreground);">（注：贡献者排序是以字母排序，并不是贡献程度）</span>
+            </p>
+
+            <!-- 贡献者列表 -->
+            <div class="space-y-3">
+              <!-- 贡献者 1：HHmcME (网站建造者) -->
+              <div class="rrz-reveal rrz-contributor-item flex items-center gap-4 p-4 rounded-lg border transition-all duration-300 hover:shadow-lg" data-rrz-variant="right" data-rrz-delay="0" style="border-color: var(--rrz-border); background: var(--rrz-card);">
+                <div class="rrz-contributor-avatar flex-shrink-0 w-12 h-12 rounded-full overflow-hidden shadow-md" style="background: linear-gradient(135deg, #fbb6c9 0%, #a78bfa 100%); display: flex; align-items: center; justify-content: center;">
+                  <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                </div>
+                <div class="flex-1 min-w-0">
+                  <h3 class="text-base font-medium" style="color: var(--rrz-foreground);">HHmcME</h3>
+                  <p class="text-xs truncate" style="color: var(--rrz-muted-foreground);">网站建造者 · 群友专属音乐创作 · 《RRZLIKE-YOU~》</p>
+                </div>
+                <div class="flex-shrink-0">
+                  <span class="rrz-tag rounded-sm px-3 py-1 text-xs" style="color: var(--rrz-foreground); background: linear-gradient(135deg, #fbb6c9 0%, #a78bfa 100%);">网站建造者</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+    </section>
+    <!-- ========== 视图 6 END：贡献者名单 ========== -->
+
+    <footer class="border-t" style="border-color: var(--rrz-border);">
+      <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-2 px-6 py-6 sm:flex-row">
+        <p class="text-xs" style="color: var(--rrz-muted-foreground);">© 2026 若若子 · rrztt.site</p>
+        <div class="flex items-center gap-4 text-xs" style="color: var(--rrz-muted-foreground);">
+          <a href="/" data-rrz-route class="rrz-link">回到顶部</a>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <!-- 背景音乐 -->
+  <audio id="rrz-bgm" preload="none" loop>
+    <source src="assets/bgm.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- 音乐播放器：浮动按钮 -->
+  <button id="rrz-music-btn" aria-label="播放音乐" class="rrz-music-btn">
+    <span class="rrz-music-icon">▶</span>
+    <span id="rrz-music-label" class="rrz-music-label">点击播放</span>
+    <span class="rrz-music-vinyl"></span>
+  </button>
+
+  <button id="rrz-to-top" aria-label="回到顶部">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+  </button>
+
+  <script src="js/app.js?v=20260808" defer></script>
+  <script src="js/music.js?v=20260808" defer></script>
+</body>
+</html>
