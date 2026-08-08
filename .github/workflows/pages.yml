@@ -1,0 +1,58 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      - name: Upload Pages artifact
+        run: |
+          set -e
+          mkdir -p _site
+          # 复制站点全部内容到 _site，排除 git/工作流文件
+          find . -maxdepth 1 -mindepth 1 \
+            -not -name .git -not -name .github -not -name _site \
+            -not -name extracted -not -name archive.zip \
+            -exec cp -r {} _site/ \;
+          # SPA 回退：拷贝 index.html 为 404.html，确保 deep link（/about、/live）不 404
+          cp _site/index.html _site/404.html
+          # 确保自定义域名 CNAME 文件在位
+          echo "www.rrztt.site" > _site/CNAME
+          # Cache busting：用 commit SHA 前 8 位替换 __BUILD_HASH__，
+          # 让浏览器每次部署后都拉取最新的 CSS/JS，避免 HTTP 缓存命中旧版本
+          SHORT_SHA=$(echo "${{ github.sha }}" | cut -c1-8)
+          sed -i "s/__BUILD_HASH__/$SHORT_SHA/g" _site/index.html _site/404.html
+          ls -la _site
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '_site'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
