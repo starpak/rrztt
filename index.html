@@ -57,12 +57,12 @@
 </head>
 <body class="min-h-screen font-sans antialiased">
 
-  <!-- 加载动画（右侧竖向进度条 - 严格靠右） -->
+  <!-- 加载动画（左侧竖向进度条 - 严格靠左） -->
   <div id="rrz-loader">
-    <div class="rrz-loader-percent">0%</div>
     <div class="rrz-loader-vertical-bar">
       <div class="rrz-loader-progress"></div>
     </div>
+    <div class="rrz-loader-percent">0%</div>
   </div>
 
   <!-- 背景粒子 -->
@@ -444,6 +444,38 @@
           </div>
           <div class="md:col-span-3 space-y-8">
             
+            <!-- v1.0.10 -->
+            <div class="rrz-reveal" data-rrz-variant="right" data-rrz-delay="0">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="rrz-version-tag">v1.0.10</span>
+                <span class="text-xs" style="color: var(--rrz-muted-foreground);">最新</span>
+              </div>
+              <ul class="space-y-2">
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>SEO 增强：添加 keywords, author, robots meta 标签及 Open Graph/Twitter Card 社交分享元数据</span>
+                </li>
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>新增移动端顶栏汉堡菜单，支持点击展开/收起和外部关闭</span>
+                </li>
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>修复加载进度条：从容器的左侧移至屏幕最右侧（现改为严格靠左对齐）</span>
+                </li>
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>修复进度条与百分比不同步问题，确保视觉进度与真实加载进度一致</span>
+                </li>
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>优化移动端响应式样式，提升小屏设备体验</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="rrz-divider"></div>
+
             <!-- v1.0.9 -->
             <div class="rrz-reveal" data-rrz-variant="right" data-rrz-delay="0">
               <div class="flex items-center gap-3 mb-4">

@@ -38,7 +38,7 @@
   }
 
   /* ============================================================
-     开场加载动画 - 竖向进度条版本（右侧，百分比与进度条严格同步）
+     开场加载动画 - 竖向进度条版本（左侧，百分比与进度条严格同步）
      ============================================================ */
   function runLoader() {
     var loader = document.getElementById("rrz-loader");
@@ -63,13 +63,14 @@
         var percent = Math.min(100, Math.floor((currentStep / steps) * 100));
         percentEl.textContent = percent + "%";
         
-        // 同步更新进度条高度
+        // 同步更新进度条高度（从底部向上增长）
         progressEl.style.height = percent + "%";
         
-        // 同步更新百分比位置（跟随进度条顶部）
+        // 同步更新百分比位置（跟随进度条顶部，从上向下移动）
+        // 当进度条高度为 percent% 时，顶部位置是 (100 - percent)%
         var topPos = 100 - percent;
         percentEl.style.top = topPos + "%";
-        percentEl.style.transform = "translateY(-" + topPos + "%)";
+        percentEl.style.transform = "translateY(-" + (100 - topPos) + "%)";
         
         if (currentStep >= steps) {
           clearInterval(timer);

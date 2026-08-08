@@ -151,21 +151,21 @@ body {
 body.rrz-loading { overflow: hidden; height: 100vh; }
 
 /* ============================================================
-   加载动画 · 右侧竖向进度条风格（严格靠右）
+   加载动画 · 左侧竖向进度条风格（严格靠左）
    ============================================================ */
 #rrz-loader {
   position: fixed; inset: 0; z-index: 9999;
-  display: flex; align-items: center; justify-content: flex-end;
-  padding-right: 4vw;
+  display: flex; align-items: center; justify-content: flex-start;
+  padding-left: 4vw;
   background: var(--rrz-background);
   color: var(--rrz-foreground);
   transition: opacity 900ms cubic-bezier(.7,0,.3,1), visibility 900ms ease, transform 900ms cubic-bezier(.7,0,.3,1);
 }
 #rrz-loader.is-done {
-  opacity: 0; visibility: hidden; transform: translateX(50px);
+  opacity: 0; visibility: hidden; transform: translateX(-50px);
 }
 
-/* 竖向进度条容器 - 紧贴屏幕右侧 */
+/* 竖向进度条容器 - 紧贴屏幕左侧 */
 .rrz-loader-vertical-bar {
   position: relative;
   width: 6px;
@@ -175,22 +175,22 @@ body.rrz-loading { overflow: hidden; height: 100vh; }
   overflow: hidden;
 }
 
-/* 进度条填充 */
+/* 进度条填充 - 从底部向上增长 */
 .rrz-loader-progress {
   position: absolute;
-  top: 0;
+  bottom: 0;
   left: 0;
   width: 100%;
   height: 0%;
-  background: linear-gradient(180deg, var(--rrz-spark) 0%, var(--rrz-spark-2) 100%);
+  background: linear-gradient(0deg, var(--rrz-spark) 0%, var(--rrz-spark-2) 100%);
   border-radius: 3px;
   /* 移除 CSS animation，由 JS 控制高度以同步百分比 */
 }
 
-/* 百分比显示 - 位于进度条左侧，动态跟随 */
+/* 百分比显示 - 位于进度条右侧，动态跟随（从上向下移动） */
 .rrz-loader-percent {
   position: absolute;
-  right: calc(4vw + 16px);
+  left: calc(4vw + 16px);
   top: 0%;
   transform: translateY(0%);
   font-size: 3rem;
