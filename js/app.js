@@ -163,6 +163,9 @@
     "/changelog.html": { view: "changelog", title: "更新日志 · 若若子" },
     "/contributors": { view: "contributors", title: "贡献者名单 · 若若子" },
     "/contributors.html": { view: "contributors", title: "贡献者名单 · 若若子" },
+    "/game": { view: "game", title: "星猫降临 · Galgame" },
+    "/game.html": { view: "game", title: "星猫降临 · Galgame" },
+    "/assets/game/game.html": { view: "game", title: "星猫降临 · Galgame" },
   };
 
   function getCurrentRoute() {
@@ -194,6 +197,7 @@
       else if (href === "/live" || href === "/live.html") matchView = "live";
       else if (href === "/music" || href === "/music.html") matchView = "music";
       else if (href === "/changelog" || href === "/changelog.html") matchView = "changelog";
+      else if (href === "/game" || href === "/game.html") matchView = "game";
       if (matchView === viewName) a.classList.add("is-active");
     });
   }
