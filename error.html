@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>错误页面 - 若若子官网</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="preconnect" href="https://unpkg.com">
+  <link rel="stylesheet" href="assets/css/style.css?v=20260808">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.1/dist/index.global.js" defer></script>
+  <script src="https://unpkg.com/lucide@1.8.0/dist/umd/lucide.min.js" defer></script>
+  <style>
+    @theme inline {
+      --color-background: #fef2f2;
+      --color-foreground: #1a1a1a;
+      --color-card: #ffffff;
+      --color-primary: #ef4444;
+      --color-primary-foreground: #ffffff;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-background text-foreground">
+  <!-- 导航栏 -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-card/90 backdrop-blur-md border-b">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="/" class="text-2xl font-bold text-primary">若若子</a>
+      <nav class="hidden md:flex gap-8">
+        <a href="/" class="hover:text-primary transition-colors font-medium">首页</a>
+        <a href="/about" class="hover:text-primary transition-colors font-medium">关于</a>
+        <a href="/live" class="hover:text-primary transition-colors font-medium">直播</a>
+        <a href="/music" class="hover:text-primary transition-colors font-medium">音乐</a>
+      </nav>
+      <button class="md:hidden p-2" aria-label="菜单">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- 主内容区 -->
+  <main class="min-h-screen flex items-center justify-center px-6 py-32">
+    <div class="max-w-2xl text-center">
+      <!-- 错误图标 -->
+      <div id="error-icon" class="mx-auto mb-8" style="font-size: 120px;">
+        🚫
+      </div>
+
+      <!-- 错误代码 -->
+      <h1 id="error-code" class="text-6xl md:text-7xl font-bold mb-4 text-primary">
+        404
+      </h1>
+
+      <!-- 错误标题 -->
+      <h2 id="error-title" class="text-3xl md:text-4xl font-semibold mb-6">
+        页面未找到
+      </h2>
+
+      <!-- 错误描述 -->
+      <p id="error-desc" class="text-lg text-text-secondary mb-8 leading-relaxed">
+        抱歉，您访问的页面不存在或已被移除。
+      </p>
+
+      <!-- 错误详情（可选） -->
+      <div id="error-details" class="bg-card border border-border rounded-xl p-6 mb-8 text-left hidden">
+        <h3 class="font-semibold mb-2 flex items-center gap-2">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          错误详情
+        </h3>
+        <p id="error-message" class="text-text-secondary"></p>
+      </div>
+
+      <!-- 错误时间 -->
+      <div class="text-text-tertiary mb-8 text-sm">
+        错误时间：<span id="error-time"></span>
+      </div>
+
+      <!-- 操作按钮 -->
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/" class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-full font-semibold hover:opacity-90 transition-opacity">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          返回首页
+        </a>
+        <a href="javascript:history.back()" class="inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-border rounded-full font-semibold hover:border-primary hover:text-primary transition-colors">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          返回上一页
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <!-- 页脚 -->
+  <footer class="border-t">
+    <div class="max-w-6xl mx-auto px-6 py-6 flex justify-between items-center">
+      <p class="text-text-tertiary text-sm">
+        © 2026 若若子 · rrztt.site
+        <span class="mx-1">|</span>
+        版权由 HHmcME 持有
+      </p>
+      <a href="https://space.bilibili.com/520292668" target="_blank" class="text-text-tertiary text-sm hover:text-primary transition-colors">
+        Bilibili
+      </a>
+    </div>
+  </footer>
+
+  <script>
+    // 错误类型配置
+    const errorTypes = {
+      404: {
+        code: '404',
+        title: '页面未找到',
+        desc: '抱歉，您访问的页面不存在或已被移除。',
+        icon: '🚫',
+        message: 'Requested URL was not found on this server.'
+      },
+      403: {
+        code: '403',
+        title: '访问被拒绝',
+        desc: '抱歉，您没有权限访问此页面。',
+        icon: '🔒',
+        message: 'You don\'t have permission to access this resource.'
+      },
+      500: {
+        code: '500',
+        title: '服务器内部错误',
+        desc: '抱歉，服务器遇到了一些问题，请稍后再试。',
+        icon: '⚙️',
+        message: 'Internal Server Error. Something went wrong on our end.'
+      },
+      502: {
+        code: '502',
+        title: '网关错误',
+        desc: '抱歉，服务器暂时无法处理您的请求，请稍后再试。',
+        icon: '🔄',
+        message: 'Bad Gateway. The server received an invalid response from upstream server.'
+      },
+      503: {
+        code: '503',
+        title: '服务暂时不可用',
+        desc: '抱歉，服务器正在维护中，请稍后再试。',
+        icon: '⏳',
+        message: 'Service Unavailable. The server is temporarily unable to handle the request.'
+      },
+      504: {
+        code: '504',
+        title: '网关超时',
+        desc: '抱歉，请求超时，请稍后再试。',
+        icon: '⏱️',
+        message: 'Gateway Timeout. The server did not respond in time.'
+      }
+    };
+
+    // 获取URL参数中的错误类型
+    function getErrorType() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const errorCode = urlParams.get('code') || '404';
+
+      return errorTypes[errorCode] || errorTypes['404'];
+    }
+
+    // 显示错误信息
+    function showError(error) {
+      document.getElementById('error-code').textContent = error.code;
+      document.getElementById('error-title').textContent = error.title;
+      document.getElementById('error-desc').textContent = error.desc;
+      document.getElementById('error-icon').textContent = error.icon;
+      document.getElementById('error-message').textContent = error.message;
+
+      // 显示错误详情（桌面端）
+      if (window.innerWidth >= 768) {
+        document.getElementById('error-details').classList.remove('hidden');
+      }
+
+      // 设置错误时间
+      const now = new Date();
+      document.getElementById('error-time').textContent = now.toLocaleString('zh-CN');
+    }
+
+    // 初始化
+    document.addEventListener('DOMContentLoaded', () => {
+      const error = getErrorType();
+      showError(error);
+    });
+  </script>
+</body>
+</html>

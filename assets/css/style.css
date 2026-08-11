@@ -1,81 +1,104 @@
 /* ============================================================
-   若若子官网 · 共享样式 v2
-   - 主题变量（明/暗 + 夸张强调色）
-   - 语义化 token 兜底
-   - 统一风格加载动画（粉紫渐变 + 线条感 + 首页色系一致）
-   - 立绘超强化多层光晕
-   - 组件进场 + 退场双向动画（双向 IntersectionObserver）
-   - 增强线条描边感、渐变描边
-   - SPA 视图切换过渡
-   ============================================================ */
+    若若子官网 · Cel Shading 风格 v3
+    - Cel Shading 配色（米白背景 + 深黑边框 + 鲜艳强调色）
+    - 方角设计（rounded: 0）
+    - 粗边框（3px）+ 硬阴影（无模糊）
+    - 大号粗体字（font-black uppercase）
+    - 快速过渡（100ms）
+    - 保留原有动画类型（只调整时序）
+    ============================================================ */
 
-/* ---------- 主题变量 ---------- */
+/* ---------- Cel Shading 配色方案 ---------- */
 :root {
-  --rrz-background: #f5f5f5;
-  --rrz-foreground: #111111;
+  /* 核心色板 */
+  --rrz-bg-base: #fafaf5;        /* 米白色背景 */
+  --rrz-text-main: #1a1a2e;      /* 深黑/深蓝前景 */
+  --rrz-accent-red: #e63946;     /* 红色强调 */
+  --rrz-accent-blue: #4ea8de;    /* 蓝色强调 */
+  --rrz-accent-yellow: #f1c40f;  /* 黄色强调 */
+  --rrz-accent-green: #2ecc71;   /* 绿色强调 */
+  --rrz-border-color: #1a1a2e;   /* 边框颜色 */
+
+  /* 语义化 token（基于 Cel Shading 风格） */
+  --rrz-background: var(--rrz-bg-base);
+  --rrz-foreground: var(--rrz-text-main);
   --rrz-card: #fafafa;
-  --rrz-card-foreground: #111111;
+  --rrz-card-foreground: var(--rrz-text-main);
   --rrz-popover: #ffffff;
-  --rrz-popover-foreground: #111111;
-  --rrz-primary: #111111;
+  --rrz-popover-foreground: var(--rrz-text-main);
+  --rrz-primary: var(--rrz-accent-red);
   --rrz-primary-foreground: #ffffff;
-  --rrz-secondary: #f4f4f5;
-  --rrz-secondary-foreground: #111111;
-  --rrz-muted: #f4f4f5;
-  --rrz-muted-foreground: #71717a;
-  --rrz-accent: #f4f4f5;
-  --rrz-accent-foreground: #111111;
-  --rrz-destructive: #ef4444;
+  --rrz-secondary: #f0f0ea;
+  --rrz-secondary-foreground: var(--rrz-text-main);
+  --rrz-muted: #e8e8e0;
+  --rrz-muted-foreground: #5a5a6e;
+  --rrz-accent: var(--rrz-accent-blue);
+  --rrz-accent-foreground: #ffffff;
+  --rrz-destructive: var(--rrz-accent-red);
   --rrz-destructive-foreground: #ffffff;
-  --rrz-border: #e4e4e7;
-  --rrz-input: #e4e4e7;
-  --rrz-ring: #111111;
+  --rrz-border: var(--rrz-border-color);
+  --rrz-input: var(--rrz-border-color);
+  --rrz-ring: var(--rrz-border-color);
 
-  --rrz-radius-sm: 2px;
-  --rrz-radius-md: 4px;
-  --rrz-radius-lg: 8px;
-  --rrz-radius-xl: 16px;
+  /* 方角设计（所有圆角均为 0） */
+  --rrz-radius-sm: 0px;
+  --rrz-radius-md: 0px;
+  --rrz-radius-lg: 0px;
+  --rrz-radius-xl: 0px;
+  --rrz-radius-full: 0px;
 
-  --rrz-font-sans: "Inter", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
-  --rrz-font-mono: "SF Mono", "Fira Code", "Source Code Pro", monospace;
+  /* 字体设置 */
+  --rrz-font-sans: "Arial Black", "Impact", "Noto Sans SC", "PingFang SC", system-ui, sans-serif;
+  --rrz-font-mono: "Courier New", "Consolas", monospace;
 
-  --rrz-breath-sm: 0.5rem;
+  /* 间距（紧凑风格） */
+  --rrz-breath-sm: 0.75rem;
   --rrz-breath-md: 1rem;
-  --rrz-breath-lg: 2rem;
-  --rrz-breath-xl: 4rem;
+  --rrz-breath-lg: 1.5rem;
+  --rrz-breath-xl: 2rem;
 
-  /* 夸张动画 + 首页色系统一的粉紫强调色 */
-  --rrz-spark: #ff5a8a;
-  --rrz-spark-2: #7c5cff;
-  --rrz-spark-3: #b56bff;
-  --rrz-spark-4: #2dd4ff;
-  --rrz-spark-gradient: linear-gradient(135deg, #ff5a8a 0%, #7c5cff 50%, #b56bff 100%);
-  --rrz-glow: rgba(255, 90, 138, 0.55);
-  --rrz-glow-2: rgba(124, 92, 255, 0.55);
-  --rrz-glow-3: rgba(181, 107, 255, 0.55);
+  /* Cel Shading 强调色（粗描边风格） */
+  --rrz-spark: var(--rrz-accent-red);
+  --rrz-spark-2: var(--rrz-accent-blue);
+  --rrz-spark-3: var(--rrz-accent-yellow);
+  --rrz-spark-4: var(--rrz-accent-green);
+  --rrz-spark-gradient: linear-gradient(135deg, var(--rrz-spark) 0%, var(--rrz-spark-2) 50%, var(--rrz-spark-3) 100%);
+  --rrz-glow: rgba(230, 57, 70, 0.4);
+  --rrz-glow-2: rgba(78, 168, 222, 0.4);
+  --rrz-glow-3: rgba(241, 196, 15, 0.4);
 
-  /* 线条感 */
-  --rrz-stroke: 1.5px;
+  /* Cel Shading 边框粗细 */
+  --rrz-stroke: 3px;
 }
 
 html.dark {
-  --rrz-background: #0a0a0a;
-  --rrz-foreground: #fafafa;
-  --rrz-card: #141414;
-  --rrz-card-foreground: #fafafa;
-  --rrz-popover: #0a0a0a;
-  --rrz-popover-foreground: #fafafa;
-  --rrz-primary: #fafafa;
-  --rrz-primary-foreground: #0a0a0a;
-  --rrz-secondary: #1f1f1f;
-  --rrz-secondary-foreground: #fafafa;
-  --rrz-muted: #1f1f1f;
-  --rrz-muted-foreground: #a1a1aa;
-  --rrz-accent: #1f1f1f;
-  --rrz-accent-foreground: #fafafa;
-  --rrz-border: #27272a;
-  --rrz-input: #27272a;
-  --rrz-ring: #fafafa;
+  --rrz-bg-base: #1a1a2e;
+  --rrz-text-main: #fafaf5;
+  --rrz-accent-red: #ff6b6b;
+  --rrz-accent-blue: #6ec1ff;
+  --rrz-accent-yellow: #ffe66d;
+  --rrz-accent-green: #95e1d3;
+  --rrz-border-color: #fafaf5;
+
+  --rrz-background: var(--rrz-bg-base);
+  --rrz-foreground: var(--rrz-text-main);
+  --rrz-card: #252540;
+  --rrz-card-foreground: var(--rrz-text-main);
+  --rrz-popover: #2a2a45;
+  --rrz-popover-foreground: var(--rrz-text-main);
+  --rrz-primary: var(--rrz-accent-red);
+  --rrz-primary-foreground: #1a1a2e;
+  --rrz-secondary: #2d2d4a;
+  --rrz-secondary-foreground: var(--rrz-text-main);
+  --rrz-muted: #2d2d4a;
+  --rrz-muted-foreground: #a0a0b0;
+  --rrz-accent: var(--rrz-accent-blue);
+  --rrz-accent-foreground: #1a1a2e;
+  --rrz-destructive: var(--rrz-accent-red);
+  --rrz-destructive-foreground: #fafaf5;
+  --rrz-border: var(--rrz-border-color);
+  --rrz-input: var(--rrz-border-color);
+  --rrz-ring: var(--rrz-border-color);
 }
 
 /* ---------- 语义化 token 兜底 ---------- */
@@ -134,10 +157,15 @@ html.dark {
 /* ---------- 基础 ---------- */
 html { scroll-behavior: smooth; }
 body {
-  background: var(--rrz-background);
-  color: var(--rrz-foreground);
+  background: var(--rrz-bg-base);
+  color: var(--rrz-text-main);
   font-family: var(--rrz-font-sans);
   overflow-x: hidden;
+  /* Cel Shading: 细微网格背景 */
+  background-image:
+    linear-gradient(rgba(26, 26, 46, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(26, 26, 46, 0.03) 1px, transparent 1px);
+  background-size: 24px 24px;
 }
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
@@ -151,52 +179,55 @@ body {
 body.rrz-loading { overflow: hidden; height: 100vh; }
 
 /* ============================================================
-   加载动画 · 左侧竖向进度条风格（严格靠左）
-   ============================================================ */
+    加载动画 · Cel Shading 风格（粗边框 + 硬阴影）
+    ============================================================ */
 #rrz-loader {
   position: fixed; inset: 0; z-index: 9999;
   display: flex; align-items: center; justify-content: flex-start;
   padding-left: 4vw;
-  background: var(--rrz-background);
-  color: var(--rrz-foreground);
-  transition: opacity 900ms cubic-bezier(.7,0,.3,1), visibility 900ms ease, transform 900ms cubic-bezier(.7,0,.3,1);
+  background: var(--rrz-bg-base);
+  color: var(--rrz-text-main);
+  border-right: 3px solid var(--rrz-border-color);
+  box-shadow: 4px 0 0 var(--rrz-border-color);
+  transition: opacity 500ms ease, visibility 500ms ease, transform 500ms ease;
 }
 #rrz-loader.is-done {
   opacity: 0; visibility: hidden; transform: translateX(-50px);
 }
 
-/* 竖向进度条容器 - 紧贴屏幕左侧 */
+/* 竖向进度条容器 - Cel Shading 风格 */
 .rrz-loader-vertical-bar {
   position: relative;
   width: 6px;
   height: 100vh;
-  background: rgba(0,0,0,.08);
-  border-radius: 3px;
+  background: rgba(26, 26, 46, 0.08);
+  border: 3px solid var(--rrz-border-color);
   overflow: hidden;
 }
 
-/* 进度条填充 - 从底部向上增长 */
+/* 进度条填充 - 从底部向上增长，硬阴影 */
 .rrz-loader-progress {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
   height: 0%;
-  background: linear-gradient(0deg, var(--rrz-spark) 0%, var(--rrz-spark-2) 100%);
-  border-radius: 3px;
+  background: var(--rrz-spark-gradient);
+  border-top: 3px solid var(--rrz-border-color);
+  box-shadow: 4px 0 0 var(--rrz-border-color);
   /* 移除 CSS animation，由 JS 控制高度以同步百分比 */
 }
 
-/* 百分比显示 - 位于进度条右侧，动态跟随（从上向下移动） */
+/* 百分比显示 - 位于进度条右侧，硬阴影 */
 .rrz-loader-percent {
   position: absolute;
   left: calc(4vw + 16px);
   top: 0%;
   transform: translateY(0%);
   font-size: 3rem;
-  font-weight: 800;
+  font-weight: 900;
   letter-spacing: .04em;
-  color: var(--rrz-foreground);
+  color: var(--rrz-text-main);
   /* 移除 CSS animation，由 JS 控制位置以同步百分比 */
 }
 
@@ -232,11 +263,12 @@ body.rrz-loading { overflow: hidden; height: 100vh; }
 }
 
 /* ============================================================
-   页面揭幕 & SPA 视图过渡
-   ============================================================ */
+    页面揭幕 & SPA 视图过渡
+    Cel Shading: 保持动画类型，只调整时序为 100ms
+    ============================================================ */
 main {
   opacity: 0; transform: translateY(30px) scale(.985);
-  transition: opacity 900ms cubic-bezier(.2,.8,.2,1), transform 900ms cubic-bezier(.2,.8,.2,1);
+  transition: opacity 300ms ease, transform 300ms ease;
 }
 body.rrz-ready main { opacity: 1; transform: none; }
 
@@ -244,7 +276,7 @@ body.rrz-ready main { opacity: 1; transform: none; }
   display: none;
   opacity: 0;
   transform: translateY(28px) scale(.992);
-  transition: opacity 480ms cubic-bezier(.2,.8,.2,1), transform 480ms cubic-bezier(.2,.8,.2,1);
+  transition: opacity 200ms ease, transform 200ms ease;
 }
 .rrz-view.rrz-view-active {
   display: block;
@@ -258,8 +290,9 @@ body.rrz-ready main { opacity: 1; transform: none; }
 }
 
 /* ============================================================
-   通用夸张关键帧
-   ============================================================ */
+    通用夸张关键帧
+    Cel Shading: 保持动画类型，只调整时序
+    ============================================================ */
 @keyframes rrz-float {
   0%, 100% { transform: translateY(0) rotate(0deg); }
   50% { transform: translateY(-28px) rotate(1.8deg); }
@@ -291,14 +324,14 @@ body.rrz-ready main { opacity: 1; transform: none; }
 @keyframes rrz-spin-slow { to { transform: rotate(360deg); } }
 
 /* ============================================================
-   组件样式：线条感 + 夸张动效
-   ============================================================ */
+    组件样式：Cel Shading 风格（方角 + 粗边框 + 硬阴影）
+    ============================================================ */
 .rrz-balance { text-wrap: balance; word-break: keep-all; }
 
-/* 导航：渐变描边 + 下划线生长 */
+/* 导航：Cel Shading 风格（粗边框 + 硬阴影） */
 .rrz-site-nav {
   backdrop-filter: blur(12px);
-  background: color-mix(in srgb, var(--rrz-background) 75%, transparent);
+  background: color-mix(in srgb, var(--rrz-bg-base) 75%, transparent);
 }
 .rrz-link {
   position: relative; display: inline-flex; align-items: center; gap: 0.25rem;
@@ -308,251 +341,273 @@ body.rrz-ready main { opacity: 1; transform: none; }
 .rrz-link .rrz-chevron { transition: transform 200ms ease; }
 .rrz-link:hover .rrz-chevron { transform: translateX(6px) scale(1.25); }
 
-.rrz-nav-link { position: relative; padding-bottom: 4px; }
-.rrz-nav-link::before {
-  content: ""; position: absolute; left: 0; right: 0; bottom: -2px;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--rrz-spark-2), transparent);
-  opacity: .5;
+.rrz-nav-link {
+  position: relative;
+  padding: 0.5rem 0;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all 280ms ease;
 }
-.rrz-nav-link::after {
-  content: ""; position: absolute; left: 50%; bottom: -3px;
-  width: 0; height: 3px; border-radius: 2px;
-  background: var(--rrz-spark-gradient);
-  transform: translateX(-50%);
-  transition: width 280ms cubic-bezier(.2,.8,.2,1.3);
-  box-shadow: 0 0 14px var(--rrz-glow-2);
+.rrz-nav-link:hover {
+  color: var(--rrz-accent-red) !important;
+  transform: translateY(-1px);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
 }
-.rrz-nav-link:hover::after,
-.rrz-nav-link.is-active::after { width: 120%; }
-.rrz-nav-link:hover,
-.rrz-nav-link.is-active { color: var(--rrz-foreground) !important; transform: translateY(-1px) scale(1.06); }
 
 .rrz-logo {
-  transition: transform 280ms cubic-bezier(.2,.8,.2,1.4);
+  transition: transform 240ms ease;
   display: inline-block;
   position: relative;
 }
-.rrz-logo::before {
-  content: ""; position: absolute; inset: -6px -10px;
-  border: 1px solid transparent;
-  transition: border-color 240ms ease, transform 240ms ease;
-  border-radius: 6px;
+.rrz-logo:hover {
+  transform: rotate(-6deg) scale(1.08);
+  color: var(--rrz-accent-red);
 }
-.rrz-logo:hover { transform: rotate(-6deg) scale(1.08); }
-.rrz-logo:hover::before { border-color: var(--rrz-spark-2); transform: rotate(6deg); }
 
-/* 分隔线：渐变描边 */
+/* 分隔线：Cel Shading 风格 */
 .rrz-divider {
-  height: 1px; position: relative; overflow: visible;
-  background: linear-gradient(90deg, transparent, var(--rrz-border) 15%, var(--rrz-border) 85%, transparent);
+  height: 3px;
+  position: relative;
+  background: var(--rrz-border-color);
 }
 .rrz-divider::before,
 .rrz-divider::after {
-  content: ""; position: absolute; top: -4px; width: 8px; height: 8px;
-  border: 1.5px solid var(--rrz-spark-2);
+  content: "";
+  position: absolute;
+  top: -4px;
+  width: 10px;
+  height: 10px;
+  border: 3px solid var(--rrz-accent-blue);
   transform: rotate(45deg);
-  filter: drop-shadow(0 0 6px var(--rrz-glow-2));
 }
-.rrz-divider::before { left: 8%; }
-.rrz-divider::after { right: 8%; }
+.rrz-divider::before { left: 5%; }
+.rrz-divider::after { right: 5%; }
 
 /* ============================================================
-   立绘：超多层光晕 + 线条感描边
-   ============================================================ */
+    立绘：Cel Shading 风格（方角 + 硬阴影）
+    ============================================================ */
 .rrz-portrait-wrap {
-  position: relative; display: flex; align-items: end; justify-content: center;
+  position: relative;
+  display: flex;
+  align-items: end;
+  justify-content: center;
   padding: 0 24px;
 }
-/* 第 1 层：外层超宽紫粉径向渐变呼吸 */
+/* Cel Shading: 简化光晕，保持风格 */
 .rrz-portrait-wrap::before {
-  content: ""; position: absolute; inset: -30px -40px -60px -40px; z-index: 0;
+  content: "";
+  position: absolute;
+  inset: -30px -40px -60px -40px;
+  z-index: 0;
   background:
-    radial-gradient(ellipse 72% 80% at 50% 78%, var(--rrz-glow) 0%, transparent 55%),
-    radial-gradient(ellipse 50% 55% at 25% 60%, var(--rrz-glow-2) 0%, transparent 65%),
-    radial-gradient(ellipse 45% 50% at 78% 55%, var(--rrz-glow-3) 0%, transparent 65%);
-  filter: blur(42px);
-  animation: rrz-glow-pink-strong 3.4s ease-in-out infinite;
+    radial-gradient(ellipse 72% 80% at 50% 78%, var(--rrz-accent-red) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 55% at 25% 60%, var(--rrz-accent-blue) 0%, transparent 65%),
+    radial-gradient(ellipse 45% 50% at 78% 55%, var(--rrz-accent-yellow) 0%, transparent 65%);
+  filter: blur(30px);
+  animation: rrz-glow-pink-strong 4s ease-in-out infinite;
 }
-/* 第 2 层：光环圆环 */
-.rrz-portrait-wrap::after {
-  content: ""; position: absolute; z-index: 0;
-  left: 50%; bottom: 10%; transform: translateX(-50%);
-  width: 72%; aspect-ratio: 1;
-  border: 1.5px dashed rgba(124,92,255,.55);
-  border-radius: 50%;
-  animation: rrz-spin-slow 22s linear infinite;
-}
-.rrz-portrait-aura {
-  position: absolute; z-index: 0;
-  left: 50%; bottom: 8%; transform: translateX(-50%);
-  width: 60%; aspect-ratio: 1;
-  border-radius: 50%;
-  border: 1px solid transparent;
-  background:
-    linear-gradient(var(--rrz-background), var(--rrz-background)) padding-box,
-    var(--rrz-spark-gradient) border-box;
-  opacity: .6;
-  animation: rrz-glow-pulse 3.2s ease-in-out infinite .6s, rrz-spin-slow 18s linear infinite reverse;
-}
-.rrz-portrait-aura.rrz-aura-2 {
-  width: 48%; opacity: .85; animation-delay: 1.2s, 10s;
-  border-width: 1.5px;
-  background: linear-gradient(var(--rrz-background), var(--rrz-background)) padding-box,
-              linear-gradient(45deg, var(--rrz-spark-4), var(--rrz-spark-2)) border-box;
-}
-.rrz-portrait-aura.rrz-aura-3 {
-  width: 36%; opacity: .5; animation-delay: 1.8s, 6s;
-  border-style: dashed;
-}
-/* 立绘本体：悬浮 + 投射线条 + 描边光环 */
+
+/* 立绘本体：Cel Shading 风格悬浮动画 */
 .rrz-portrait {
-  position: relative; z-index: 1;
-  max-height: 620px; width: auto; max-width: 100%; object-fit: contain;
-  animation: rrz-float 6.4s ease-in-out infinite;
-  transition: transform 420ms cubic-bezier(.2,.8,.2,1.2), filter 420ms ease;
-  filter: drop-shadow(0 30px 60px rgba(0,0,0,.25)) drop-shadow(0 0 28px var(--rrz-glow-2));
+  position: relative;
+  z-index: 1;
+  max-height: 620px;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  animation: rrz-float 5s ease-in-out infinite;
+  transition: transform 100ms ease;
+  filter: drop-shadow(0 20px 40px rgba(26, 26, 46, 0.3));
 }
 .rrz-portrait:hover {
-  transform: scale(1.08) rotate(-1.5deg) translateZ(0);
+  transform: scale(1.08) rotate(-1.5deg);
   animation-play-state: paused;
-  filter: drop-shadow(0 40px 80px rgba(0,0,0,.3)) drop-shadow(0 0 50px var(--rrz-glow));
+  filter: drop-shadow(0 30px 60px rgba(230, 57, 70, 0.4));
 }
 
 /* ============================================================
-   卡片 / 标签：渐变描边 + 进场退场双向动画
-   ============================================================ */
+    卡片 / 标签：Cel Shading 风格（方角 + 硬阴影）
+    ============================================================ */
 .rrz-tag {
   position: relative;
-  border: 1px solid var(--rrz-border);
-  background: linear-gradient(180deg, var(--rrz-card), color-mix(in srgb, var(--rrz-card) 85%, var(--rrz-background)));
-  transition: transform 280ms cubic-bezier(.2,.8,.2,1.4), border-color 220ms ease,
-              background-color 220ms ease, box-shadow 300ms ease, color 220ms ease;
-  border-radius: 4px;
-}
-.rrz-tag::before {
-  content: ""; position: absolute; inset: -1px; border-radius: inherit;
-  padding: 1px;
-  background: var(--rrz-spark-gradient);
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor; mask-composite: exclude;
-  opacity: 0; transition: opacity 280ms ease;
-  pointer-events: none;
-}
-.rrz-tag::after {
-  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
-  background: var(--rrz-spark-gradient);
-  opacity: 0; transition: opacity 280ms ease; mix-blend-mode: multiply;
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border: 3px solid var(--rrz-border-color);
+  background: var(--rrz-bg-base);
+  color: var(--rrz-text-main);
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  box-shadow: 3px 3px 0 var(--rrz-border-color);
+  transition: all 100ms ease;
+  transform: rotate(-2deg);
 }
 .rrz-tag:hover {
-  transform: translateY(-10px) rotate(-2deg) scale(1.08);
-  box-shadow: 0 22px 48px rgba(124,92,255,.32), 0 0 0 1px var(--rrz-spark-2), 0 0 30px var(--rrz-glow-2);
-  color: #fff !important;
+  transform: rotate(0deg) translateY(-3px);
+  box-shadow: 5px 5px 0 var(--rrz-border-color);
+  background: var(--rrz-accent-yellow);
+  color: var(--rrz-text-main);
 }
-.rrz-tag:hover::before { opacity: 1; }
-.rrz-tag:hover::after { opacity: .92; }
-.rrz-tag:hover p { color: #fff !important; }
 
-/* CTA：渐变描边按钮+扫光 */
+/* CTA: Cel Shading 按钮风格 */
 .rrz-cta {
   position: relative; overflow: hidden;
 }
 .rrz-cta::before {
-  content: ""; position: absolute; inset: 0;
-  background: linear-gradient(120deg, transparent, rgba(255,90,138,.22), rgba(124,92,255,.22), transparent);
-  transform: translateX(-140%); transition: transform 700ms ease;
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--rrz-accent-red);
+  transition: all 100ms ease;
 }
-.rrz-cta:hover::before { transform: translateX(140%); }
-.rrz-cta:hover { letter-spacing: .04em; }
+.rrz-cta:hover::before {
+  transform: translateX(100%);
+  opacity: 0.9;
+}
+.rrz-cta:hover { letter-spacing: 0.04em; }
 
+/* Cel Shading 按钮基础 */
 .rrz-btn {
   position: relative;
-  display: inline-flex; align-items: center; gap: .5rem;
-  padding: .65rem 1.1rem;
-  border-radius: 6px;
-  border: 1px solid transparent;
-  background: var(--rrz-spark-gradient);
-  color: #fff;
-  font-weight: 600; font-size: .875rem;
-  box-shadow: 0 10px 30px rgba(124,92,255,.35), 0 0 0 1px rgba(255,90,138,.2);
-  transition: transform 240ms cubic-bezier(.2,.8,.2,1.3), box-shadow 240ms ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border: 3px solid var(--rrz-border-color);
+  background: var(--rrz-accent-red);
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  box-shadow: 3px 3px 0 var(--rrz-border-color);
   cursor: pointer;
+  transition: all 240ms ease;
 }
-.rrz-btn:hover { transform: translateY(-3px) scale(1.04); box-shadow: 0 18px 44px var(--rrz-glow-2), 0 0 0 2px var(--rrz-spark-3); }
-.rrz-btn.rrz-ghost {
-  background: transparent;
-  color: var(--rrz-foreground);
-  border: 1px solid var(--rrz-border);
+.rrz-btn:hover {
+  transform: translateX(-1px) translateY(-1px);
+  box-shadow: 5px 5px 0 var(--rrz-border-color);
+  background: var(--rrz-accent-red);
+}
+.rrz-btn:active {
+  transform: translateX(2px) translateY(2px);
   box-shadow: none;
 }
-.rrz-btn.rrz-ghost::before {
-  content: ""; position: absolute; inset: -1px; border-radius: inherit; padding: 1px;
-  background: var(--rrz-spark-gradient);
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor; mask-composite: exclude;
-  opacity: 0; transition: opacity 240ms ease;
+.rrz-btn.rrz-ghost {
+  background: var(--rrz-bg-base);
+  color: var(--rrz-text-main);
+  box-shadow: 3px 3px 0 var(--rrz-border-color);
 }
-.rrz-btn.rrz-ghost:hover { background: transparent; box-shadow: none; }
-.rrz-btn.rrz-ghost:hover::before { opacity: 1; }
+.rrz-btn.rrz-ghost:hover {
+  transform: translateX(-1px) translateY(-1px);
+  box-shadow: 5px 5px 0 var(--rrz-border-color);
+}
 
 /* ============================================================
-   滚动揭示（进场 + 退场双向）
-   ============================================================ */
+    滚动揭示（进场 + 退场双向）
+    Cel Shading: 保持动画类型，不改变时序
+    ============================================================ */
 .rrz-reveal {
-  opacity: 0; transform: translateY(60px) rotate(-1.5deg) scale(.96);
+  opacity: 0;
+  transform: translateY(60px) rotate(-1.5deg) scale(0.96);
   transition: opacity 800ms cubic-bezier(.2,.8,.2,1), transform 800ms cubic-bezier(.2,.8,.2,1);
 }
-.rrz-reveal.rrz-in { opacity: 1; transform: none; }
-.rrz-reveal[data-rrz-variant="left"]  { transform: translateX(-88px) rotate(-2deg) scale(.96); }
-.rrz-reveal[data-rrz-variant="right"] { transform: translateX(88px) rotate(2deg) scale(.96); }
-.rrz-reveal[data-rrz-variant="zoom"]  { transform: scale(.65) rotate(-4deg); }
-.rrz-reveal[data-rrz-variant="flip"]  { transform: perspective(900px) rotateX(65deg); transform-origin: top; }
-.rrz-reveal[data-rrz-variant="spin"]  { transform: scale(.5) rotate(-25deg); }
-.rrz-reveal.rrz-in[data-rrz-variant] { transform: none; }
+.rrz-reveal.rrz-in {
+  opacity: 1;
+  transform: none;
+}
+.rrz-reveal[data-rrz-variant="left"]  {
+  transform: translateX(-88px) rotate(-2deg) scale(0.96);
+}
+.rrz-reveal[data-rrz-variant="right"] {
+  transform: translateX(88px) rotate(2deg) scale(0.96);
+}
+.rrz-reveal[data-rrz-variant="zoom"]  {
+  transform: scale(0.65) rotate(-4deg);
+}
+.rrz-reveal[data-rrz-variant="flip"]  {
+  transform: perspective(900px) rotateX(65deg);
+  transform-origin: top;
+}
+.rrz-reveal[data-rrz-variant="spin"]  {
+  transform: scale(0.5) rotate(-25deg);
+}
+.rrz-reveal.rrz-in[data-rrz-variant] {
+  transform: none;
+}
 
-/* 标题字符夸张逐字入场 */
-.rrz-split { display: inline-block; position: relative; }
+/* 标题字符 Cel Shading 风格入场 */
+.rrz-split {
+  display: inline-block;
+  position: relative;
+}
 .rrz-split::before {
-  content: ""; position: absolute; left: -10px; right: -10px; bottom: 0; height: 1px;
+  content: "";
+  position: absolute;
+  left: -10px;
+  right: -10px;
+  bottom: 0;
+  height: 1px;
   background: linear-gradient(90deg, transparent, var(--rrz-spark-gradient), transparent);
-  opacity: .35;
+  opacity: 0.35;
 }
 .rrz-split .rrz-ch {
-  display: inline-block; opacity: 0;
-  transform: translateY(70px) rotate(22deg) scale(.25);
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(70px) rotate(22deg) scale(0.25);
   transition: opacity 680ms cubic-bezier(.2,.8,.2,1), transform 680ms cubic-bezier(.2,.8,.2,1.4);
   background: linear-gradient(180deg, var(--rrz-foreground), color-mix(in srgb, var(--rrz-foreground) 78%, var(--rrz-spark-2)));
-  -webkit-background-clip: text; background-clip: text; color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
-body.rrz-ready .rrz-split .rrz-ch { opacity: 1; transform: none; }
+body.rrz-ready .rrz-split .rrz-ch {
+  opacity: 1;
+  transform: none;
+}
 
-/* 徽章：渐变描边 */
+/* 徽章：Cel Shading 风格 */
 .rrz-badge {
-  display: inline-flex; align-items: center; gap: .45rem;
-  padding: .38rem .85rem; border-radius: 999px;
-  border: 1px solid var(--rrz-border);
-  background: var(--rrz-card);
-  font-size: .68rem; letter-spacing: .22em; text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: 3px solid var(--rrz-border-color);
+  background: var(--rrz-bg-base);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   color: var(--rrz-muted-foreground);
   position: relative;
   animation: rrz-bob 3s ease-in-out infinite;
+  box-shadow: 2px 2px 0 var(--rrz-border-color);
 }
 .rrz-badge::before {
-  content: ""; position: absolute; inset: -1px; border-radius: 999px; padding: 1px;
-  background: var(--rrz-spark-gradient);
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor; mask-composite: exclude;
-  opacity: .5;
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border: 3px solid var(--rrz-accent-blue);
+  opacity: 0.5;
 }
 
-/* 版本标签：渐变背景 */
+/* 版本标签：Cel Shading 风格 */
 .rrz-version-tag {
-  display: inline-flex; align-items: center; gap: .45rem;
-  padding: .38rem .85rem; border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: 3px solid var(--rrz-border-color);
   background: var(--rrz-spark-gradient);
-  font-size: .68rem; letter-spacing: .22em; text-transform: uppercase;
-  color: #ffffff; font-weight: 600;
-  box-shadow: 0 4px 14px rgba(255, 90, 138, 0.35);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #ffffff;
+  box-shadow: 3px 3px 0 var(--rrz-border-color);
   animation: rrz-bob 3s ease-in-out infinite;
 }
 
@@ -568,38 +623,58 @@ body.rrz-ready .rrz-split .rrz-ch { opacity: 1; transform: none; }
 }
 
 /* ============================================================
-   跑马灯：渐变描边
-   ============================================================ */
+    跑马灯：Cel Shading 风格
+    ============================================================ */
 .rrz-marquee {
-  display: flex; overflow: hidden; gap: 0;
-  border-top: 1px solid var(--rrz-border);
-  border-bottom: 1px solid var(--rrz-border);
-  background:
-    linear-gradient(180deg, color-mix(in srgb, var(--rrz-spark) 6%, transparent), transparent),
-    var(--rrz-foreground);
-  color: var(--rrz-background);
-  padding: .85rem 0;
+  display: flex;
+  overflow: hidden;
+  gap: 0;
+  border-top: 3px solid var(--rrz-border-color);
+  border-bottom: 3px solid var(--rrz-border-color);
+  background: var(--rrz-bg-base);
+  color: var(--rrz-text-main);
+  padding: 1rem 0;
   position: relative;
 }
 .rrz-marquee::before,
 .rrz-marquee::after {
-  content: ""; position: absolute; top:0; bottom:0; width: 18%; pointer-events: none; z-index: 2;
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 15%;
+  pointer-events: none;
+  z-index: 2;
 }
-.rrz-marquee::before { left:0; background: linear-gradient(90deg, var(--rrz-foreground), transparent); }
-.rrz-marquee::after { right:0; background: linear-gradient(270deg, var(--rrz-foreground), transparent); }
+.rrz-marquee::before {
+  left: 0;
+  background: linear-gradient(90deg, var(--rrz-bg-base), transparent);
+}
+.rrz-marquee::after {
+  right: 0;
+  background: linear-gradient(270deg, var(--rrz-bg-base), transparent);
+}
 .rrz-marquee__track {
-  display: flex; flex-shrink: 0; gap: 2.5rem; padding-right: 2.5rem;
-  white-space: nowrap; animation: rrz-marquee 22s linear infinite;
+  display: flex;
+  flex-shrink: 0;
+  gap: 3rem;
+  padding-right: 3rem;
+  white-space: nowrap;
+  animation: rrz-marquee 25s linear infinite;
 }
-.rrz-marquee:hover .rrz-marquee__track { animation-play-state: paused; }
+.rrz-marquee:hover .rrz-marquee__track {
+  animation-play-state: paused;
+}
 .rrz-marquee__track span {
-  font-size: .8rem; letter-spacing: .25em; text-transform: uppercase; opacity: .9;
-  background: linear-gradient(90deg, var(--rrz-background), #ff9fc0 30%, #c2b6ff 60%, var(--rrz-background));
-  background-size: 200% 100%;
-  -webkit-background-clip: text; background-clip: text; color: transparent;
-  animation: rrz-shimmer 5s linear infinite;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--rrz-accent-blue);
 }
-.rrz-marquee__track span b { color: var(--rrz-spark); -webkit-text-fill-color: var(--rrz-spark); text-shadow: 0 0 14px var(--rrz-glow); }
+.rrz-marquee__track span b {
+  color: var(--rrz-accent-red);
+}
 
 /* ============================================================
    背景粒子 + 渐变描边网格
