@@ -84,8 +84,6 @@
           <a href="/" data-rrz-route class="rrz-link rrz-nav-link">首页</a>
           <a href="/about" data-rrz-route class="rrz-link rrz-nav-link">关于</a>
           <a href="/live" data-rrz-route class="rrz-link rrz-nav-link">直播</a>
-          <a href="/music" data-rrz-route class="rrz-link rrz-nav-link">音乐</a>
-            <a href="/changelog" class="rrz-link rrz-nav-link">更新日志</a>
           <a href="/changelog" data-rrz-route class="rrz-link rrz-nav-link">更新日志</a>
         </div>
       </div>
@@ -95,7 +93,6 @@
           <a href="/" data-rrz-route class="rrz-link rrz-mobile-link py-2 text-sm" style="color: var(--rrz-foreground);">首页</a>
           <a href="/about" data-rrz-route class="rrz-link rrz-mobile-link py-2 text-sm" style="color: var(--rrz-foreground);">关于</a>
           <a href="/live" data-rrz-route class="rrz-link rrz-mobile-link py-2 text-sm" style="color: var(--rrz-foreground);">直播</a>
-          <a href="/music" data-rrz-route class="rrz-link rrz-mobile-link py-2 text-sm" style="color: var(--rrz-foreground);">音乐</a>
           <!-- 移除移动端菜单中的更新日志链接 -->
           <!-- 移除 Galgame 移动端菜单 -->
         </div>
@@ -420,65 +417,6 @@
     </section>
     <!-- ========== 视图 3 END：直播 ========== -->
 
-    <!-- ========== 视图 4：音乐 (/music) ========== -->
-    <section id="rrz-view-music" class="rrz-view" data-rrz-view="music">
-      <section class="mx-auto max-w-6xl px-6 py-12 md:py-20">
-        <div class="grid gap-6 md:grid-cols-4">
-          <div class="md:col-span-1 rrz-reveal" data-rrz-variant="left">
-            <p class="rrz-badge mb-4">music</p>
-            <h1 class="rrz-balance text-3xl md:text-4xl font-medium tracking-tight" style="color: var(--rrz-foreground);" data-rrz-split>若若子的音乐</h1>
-          </div>
-          <div class="md:col-span-3 space-y-6">
-            <p class="rrz-balance text-base leading-relaxed rrz-reveal" data-rrz-variant="right" style="color: var(--rrz-muted-foreground);">
-              这里收录了群友们为若若子创作的原创音乐。
-            </p>
-
-            <!-- 歌曲列表 - 网易云风格 -->
-            <div class="space-y-3">
-              <!-- 歌曲 1：HHmcME 作品 -->
-              <div class="rrz-reveal rrz-song-item" data-rrz-variant="right" data-rrz-delay="0">
-                <div class="rrz-song-card flex items-center gap-4 p-3 rounded-lg border transition-all duration-300 hover:shadow-lg" style="border-color: var(--rrz-border); background: var(--rrz-card);">
-                  <!-- 专辑封面 -->
-                  <div class="rrz-song-cover flex-shrink-0 w-14 h-14 rounded-lg overflow-hidden shadow-md" style="background: linear-gradient(135deg, #fbb6c9 0%, #a78bfa 100%);">
-                    <svg class="w-full h-full p-3" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
-                  </div>
-                  <!-- 歌曲信息 -->
-                  <div class="flex-1 min-w-0">
-                    <h3 class="text-base font-medium truncate" style="color: var(--rrz-foreground);">RRZLIKE-YOU~</h3>
-                    <p class="text-xs truncate" style="color: var(--rrz-muted-foreground);">HHmcME（群友专属）</p>
-                  </div>
-                  <!-- 播放控制 -->
-                  <div class="flex-shrink-0">
-                    <button class="rrz-play-btn w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110" style="background: linear-gradient(135deg, #fbb6c9 0%, #a78bfa 100%); color: white;">
-                      <svg class="w-5 h-5 play-icon" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-                      <svg class="w-5 h-5 pause-icon hidden" viewBox="0 0 24 24" fill="currentColor" stroke="none"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
-                    </button>
-                  </div>
-                  <!-- 隐藏的实际音频元素 -->
-                  <audio id="rrz-audio-0" class="hidden" preload="none">
-                    <source src="https://cdn.hailuoai.com/prod/2026-08-08-13/moss-audio/user_music/1786166047915393669-428489832661272.mp3?filename=RRZLIKE-YOU_no-watermark.mp3" type="audio/mpeg">
-                  </audio>
-                </div>
-              </div>
-
-              <!-- 更多歌曲占位 -->
-              <div class="rrz-reveal rrz-song-item" data-rrz-variant="right" data-rrz-delay="120">
-                <div class="flex items-center justify-center p-8 rounded-lg border border-dashed" style="border-color: var(--rrz-border); color: var(--rrz-muted-foreground);">
-                  <div class="text-center">
-                    <svg class="mx-auto mb-3" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>
-                    <p class="text-sm">更多群友作品敬请期待...</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-    </section>
-    <!-- ========== 视图 4 END：音乐 ========== -->
-
-
     <!-- ========== 视图 6：贡献者名单 (/contributors) ========== -->
     <section id="rrz-view-contributors" class="rrz-view" data-rrz-view="contributors">
       <section class="mx-auto max-w-6xl px-6 py-12 md:py-20">
@@ -516,7 +454,7 @@
     </section>
     <!-- ========== 视图 6 END：贡献者名单 ========== -->
 
-    <!-- ========== 视图 7：更新日志 (/changelog) ========== 
+    <!-- ========== 视图 7：更新日志 (/changelog) ========== -->
     <section id="rrz-view-changelog" class="rrz-view" data-rrz-view="changelog">
       <section class="mx-auto max-w-6xl px-6 py-12 md:py-20">
         <div class="grid gap-6 md:grid-cols-4">
@@ -525,7 +463,17 @@
             <h1 class="rrz-balance text-3xl md:text-4xl font-medium tracking-tight" style="color: var(--rrz-foreground);" data-rrz-split>更新日志</h1>
           </div>
           <div class="md:col-span-3 space-y-8">
-            <p style="color: var(--rrz-muted-foreground); text-align: center;">正在加载更新日志...</p>
+            <!-- 更新日志容器 -->
+            <div id="changelog-container" class="space-y-8">
+              <div class="text-center py-12">
+                <div class="inline-block animate-spin" style="width: 40px; height: 40px;">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10" stroke-dasharray="30 10"/>
+                  </svg>
+                </div>
+                <p class="mt-4" style="color: var(--rrz-muted-foreground);">正在加载更新日志...</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -546,24 +494,11 @@
     </footer>
   </main>
 
-  <!-- 背景音乐 -->
-  <audio id="rrz-bgm" preload="none" loop>
-    <source src="assets/bgm.mp3" type="audio/mpeg">
-  </audio>
-
-  <!-- 音乐播放器：浮动按钮 -->
-  <button id="rrz-music-btn" aria-label="播放音乐" class="rrz-music-btn">
-    <span class="rrz-music-icon">▶</span>
-    <span id="rrz-music-label" class="rrz-music-label">点击播放</span>
-    <span class="rrz-music-vinyl"></span>
-  </button>
-
   <button id="rrz-to-top" aria-label="回到顶部">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
   </button>
 
   <script src="assets/js/app.js?v=20260808" defer></script>
-  <script src="assets/js/music.js?v=20260808" defer></script>
   <script src="assets/js/load-history.js?v=20260808"></script>
 </body>
 </html>

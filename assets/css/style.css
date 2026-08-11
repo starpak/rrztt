@@ -875,80 +875,30 @@ body.rrz-ready .rrz-split .rrz-ch {
 }
 .rrz-faq-item.rrz-open .rrz-faq-a {
   padding: 0 1.1rem 1.05rem;
-}
-.rrz-faq-a p { margin: 0; font-size: .85rem; line-height: 1.7; color: var(--rrz-muted-foreground); }
+ }
+ .rrz-faq-a p { margin: 0; font-size: .85rem; line-height: 1.7; color: var(--rrz-muted-foreground); }
 
-/* 音乐播放器：默认展开状态 */
-.rrz-music-btn {
-  position: fixed; bottom: 1.5rem; right: 5rem; z-index: 60;
-  display: inline-flex; align-items: center; gap: .5rem;
-  padding: .6rem 1rem; border-radius: 999px;
-  border: 1px solid var(--rrz-border);
-  background: var(--rrz-card);
-  color: var(--rrz-foreground);
-  font-size: .8rem; font-weight: 500;
-  cursor: pointer; user-select: none;
-  transition: all .5s cubic-bezier(.4,0,.2,1);
-  overflow: hidden;
-}
-.rrz-music-btn:hover {
-  border-color: var(--rrz-foreground);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0,0,0,.08);
-}
-.rrz-music-icon { font-size: .7rem; line-height: 1; transition: opacity .3s ease; }
-.rrz-music-label { white-space: nowrap; transition: opacity .3s ease, max-width .4s ease; max-width: 120px; }
-.rrz-music-vinyl {
-  width: 18px; height: 18px; border-radius: 50%;
-  border: 2px solid var(--rrz-muted-foreground);
-  background: radial-gradient(circle, var(--rrz-muted-foreground) 30%, transparent 32%, var(--rrz-muted-foreground) 50%, transparent 52%);
-  flex-shrink: 0;
-  transition: all .5s cubic-bezier(.4,0,.2,1);
-}
-
-/* 播放中：缩小成右下角小圆圈 */
-.rrz-music-btn.is-playing {
-  bottom: 1.5rem; right: 1.5rem;
-  width: 48px; height: 48px;
-  padding: 0; gap: 0;
-  justify-content: center;
-  border-radius: 50%;
-  border-color: var(--rrz-foreground);
-  box-shadow: 0 6px 20px rgba(0,0,0,.12), 0 0 0 3px var(--rrz-card);
-  transform: scale(1);
-}
-.rrz-music-btn.is-playing:hover {
-  transform: scale(1.1);
-  box-shadow: 0 8px 28px rgba(0,0,0,.16), 0 0 0 3px var(--rrz-card);
-}
-/* 隐藏文字和图标，只留黑胶 */
-.rrz-music-btn.is-playing .rrz-music-icon,
-.rrz-music-btn.is-playing .rrz-music-label {
-  opacity: 0; max-width: 0; width: 0; overflow: hidden; pointer-events: none;
-}
-/* 黑胶放大旋转，绝对居中 */
-.rrz-music-btn.is-playing .rrz-music-vinyl {
-  width: 36px; height: 36px;
-  border-width: 2px;
-  border-color: var(--rrz-foreground);
-  background: radial-gradient(circle, var(--rrz-foreground) 28%, transparent 30%, var(--rrz-foreground) 48%, transparent 50%, var(--rrz-foreground) 68%, transparent 70%);
-  animation: rrz-vinyl-spin 3s linear infinite;
-}
-@keyframes rrz-vinyl-spin {
-  to { transform: rotate(360deg); }
-}
-
-/* 回到顶部：渐变描边（上移避免遮挡音乐播放器） */
+ /* 回到顶部：Cel Shading 风格 */
 #rrz-to-top {
-  position: fixed; right: 1.5rem; bottom: 5.5rem; z-index: 800;
-  width: 48px; height: 48px; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  background: var(--rrz-foreground); color: var(--rrz-background);
-  border: none; cursor: pointer;
-  opacity: 0; visibility: hidden;
-  transform: translateY(24px) scale(.6) rotate(-90deg);
-  transition: opacity 320ms ease, transform 320ms cubic-bezier(.2,.8,.2,1.4), visibility 320ms, box-shadow 260ms ease;
-  box-shadow: 0 10px 30px rgba(0,0,0,.22);
+  position: fixed;
+  right: 1.5rem;
+  bottom: 5.5rem;
+  z-index: 800;
+  width: 48px;
+  height: 48px;
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--rrz-foreground);
+  color: var(--rrz-background);
+  border: 3px solid var(--rrz-border-color);
+  box-shadow: 3px 3px 0 var(--rrz-border-color);
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(24px) scale(0.6);
+  transition: opacity 320ms ease, transform 320ms cubic-bezier(.2,.8,.2,1.4), visibility 320ms;
 }
 #rrz-to-top::before {
   content: ""; position: absolute; inset: -2px; border-radius: 50%; padding: 2px;
@@ -1129,22 +1079,4 @@ html.rrz-nav-leaving main {
   }
 }
 
-/* 深色模式主题色适配 */
-html.dark {
-  --rrz-theme-color: #0a0a0a;
-}
-
-/* 音乐页面卡片样式 */
-.rrz-music-card {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.rrz-music-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
-}
-.rrz-music-card audio {
-  border-radius: 8px;
-}
-.rrz-music-card audio::-webkit-media-controls-panel {
-  background: linear-gradient(135deg, #fbb6c9 0%, #a78bfa 100%);
-}
+ /* 深色模式主题色适配 */

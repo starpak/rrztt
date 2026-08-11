@@ -157,8 +157,6 @@
     "/about.html": { view: "about", title: "关于 · 若若子" },
     "/live": { view: "live",  title: "直播间 · 若若子" },
     "/live.html": { view: "live",  title: "直播间 · 若若子" },
-    "/music": { view: "music", title: "音乐 · 若若子" },
-    "/music.html": { view: "music", title: "音乐 · 若若子" },
     "/changelog": { view: "changelog", title: "更新日志 · 若若子" },
     "/changelog.html": { view: "changelog", title: "更新日志 · 若若子" },
     "/contributors": { view: "contributors", title: "贡献者名单 · 若若子" },
@@ -192,7 +190,6 @@
       var matchView = "home";
       if (href === "/about" || href === "/about.html") matchView = "about";
       else if (href === "/live" || href === "/live.html") matchView = "live";
-      else if (href === "/music" || href === "/music.html") matchView = "music";
       else if (href === "/changelog" || href === "/changelog.html") matchView = "changelog";
       if (matchView === viewName) a.classList.add("is-active");
     });
