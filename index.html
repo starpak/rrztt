@@ -84,7 +84,6 @@
           <a href="/" data-rrz-route class="rrz-link rrz-nav-link">首页</a>
           <a href="/about" data-rrz-route class="rrz-link rrz-nav-link">关于</a>
           <a href="/live" data-rrz-route class="rrz-link rrz-nav-link">直播</a>
-          <a href="/changelog" data-rrz-route class="rrz-link rrz-nav-link">更新日志</a>
         </div>
       </div>
       <!-- 移动端汉堡菜单 -->
@@ -109,14 +108,14 @@
           <div class="mb-8 flex flex-wrap gap-2">
             <span class="rrz-tag rounded-sm px-3 py-1 text-xs" style="color: var(--rrz-foreground);">声音好听</span>
             <span class="rrz-tag rounded-sm px-3 py-1 text-xs" style="color: var(--rrz-foreground);">唱歌一般</span>
-            <span class="rrz-tag rounded-sm px-3 py-1 text-xs" style="color: var(--rrz-foreground);">开播不到十天</span>
+            <span class="rrz-tag rounded-sm px-3 py-1 text-xs" style="color: var(--rrz-foreground);">反正还是太可爱了</span>
           </div>
           <a href="/live" data-rrz-route class="rrz-link rrz-cta group inline-flex items-center gap-2 self-start border-b pb-1 text-sm font-medium" style="color: var(--rrz-foreground); border-color: var(--rrz-border);">
             看看直播信息
             <svg class="rrz-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
         </div>
-        <div class="rrz-portrait-wrap items-end justify-center md:justify-end" id="rrz-portrait-click">
+        <div class="rrz-portrait-wrap items-end justify-center md:justify-end">
           <!-- 多层光环 -->
           <div class="rrz-portrait-aura"></div>
           <div class="rrz-portrait-aura rrz-aura-2"></div>
@@ -292,48 +291,6 @@
             <svg class="rrz-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
         </div>
-
-      <!-- 更新日志区块 -->
-      <div class="rrz-divider mx-auto max-w-6xl"></div>
-
-      <section class="mx-auto max-w-6xl px-6 py-10 md:py-16">
-        <div class="grid gap-6 md:grid-cols-4">
-          <div class="md:col-span-1 rrz-reveal" data-rrz-variant="left">
-            <h2 class="rrz-balance text-2xl font-medium tracking-tight" style="color: var(--rrz-foreground);">更新日志</h2>
-          </div>
-          <div class="md:col-span-3 space-y-8">
-
-            <!-- v1.0.10 -->
-            <div class="rrz-reveal" data-rrz-variant="right" data-rrz-delay="0">
-              <div class="flex items-center gap-3 mb-4">
-                <span class="rrz-version-tag">初具人形 v1.0.0</span>
-              </div>
-              <ul class="space-y-2">
-                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
-                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                  <span>官网首个正式版本发布</span>
-                </li>
-              </ul>
-            </div>
-
-            <div class="rrz-divider"></div>
-
-            <!-- v1.0.1 -->
-            <div class="rrz-reveal" data-rrz-variant="right" data-rrz-delay="120">
-              <div class="flex items-center gap-3 mb-4">
-                <span class="rrz-version-tag">特效增强 v1.0.1</span>
-              </div>
-              <ul class="space-y-2">
-                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
-                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                  <span>加强了官网的特效与动画效果</span>
-                </li>
-              </ul>
-            </div>
-
-          </div>
-        </div>
-      </section>
       </section>
     </section>
     <!-- ========== 视图 2 END：关于 ========== -->
@@ -463,16 +420,391 @@
             <h1 class="rrz-balance text-3xl md:text-4xl font-medium tracking-tight" style="color: var(--rrz-foreground);" data-rrz-split>更新日志</h1>
           </div>
           <div class="md:col-span-3 space-y-8">
-            <!-- 更新日志容器 -->
-            <div id="changelog-container" class="space-y-8">
-              <div class="text-center py-12">
-                <div class="inline-block animate-spin" style="width: 40px; height: 40px;">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="10" stroke-dasharray="30 10"/>
-                  </svg>
-                </div>
-                <p class="mt-4" style="color: var(--rrz-muted-foreground);">正在加载更新日志...</p>
+            <!-- v1.1.2 -->
+            <div class="rrz-reveal" data-rrz-variant="right" data-rrz-delay="0">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="rrz-version-tag">v1.1.2 · 2026-08-12</span>
+                <span class="tag" style="background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));">最新</span>
               </div>
+              <ul class="space-y-2">
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>界面优化与功能调整</span>
+                </li>
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>📝 将主页标签「开播不到十天」改为「反正还是太可爱了」</span>
+                </li>
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>✂️ 移除立绘的点击效果，防止误触弹出可爱文字气泡</span>
+                </li>
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>📖 将历史记录内容直接迁移到更新日志页面，移除独立加载逻辑</span>
+                </li>
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>🗑️ 移除关于页面的更新日志链接入口</span>
+                </li>
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>🗑️ 移除顶栏的更新日志导航入口</span>
+                </li>
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>🧹 删除历史记录依据文件（历史依据.json）和历史记录加载脚本（load-history.js）</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="rrz-divider"></div>
+
+            <!-- v1.1.1 -->
+            <div class="rrz-reveal" data-rrz-variant="right" data-rrz-delay="0">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="rrz-version-tag">v1.1.1 · 2026-08-11</span>
+                <span class="tag" style="background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));">最新</span>
+              </div>
+              <ul class="space-y-2">
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>Cel Shading 风格重塑</span>
+                </li>
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>🎨 Cel Shading 风格设计：米白背景 + 深黑边框 + 鲜艳强调色</span>
+                </li>
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>✨ 方角设计（rounded: 0）：所有组件采用硬朗直角</span>
+                </li>
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>🛡️ 粗边框风格（3px solid）：统一边框厚度</span>
+                </li>
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>📦 硬阴影效果（无模糊）：3px 3px 0 阴影</span>
+                </li>
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>⚡ 快速过渡动画（100ms）：响应更敏捷</span>
+                </li>
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>🔤 大号粗体字：font-black uppercase</span>
+                </li>
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>📱 响应式布局：适配各种屏幕尺寸</span>
+                </li>
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>🎮 游戏组件完全移除：清理所有游戏相关代码</span>
+                </li>
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>📝 更新日志独立页面：支持动态加载历史版本</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="rrz-divider"></div>
+
+            <!-- v1.0.10 -->
+            <div class="rrz-reveal" data-rrz-variant="right" data-rrz-delay="120">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="rrz-version-tag">v1.0.10 · 2026-08-10</span>
+              </div>
+              <ul class="space-y-2">
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>SEO 增强 & UI 优化</span>
+                </li>
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>SEO 增强：添加 keywords, author, robots meta 标签及 Open Graph/Twitter Card 社交分享元数据</span>
+                </li>
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>新增移动端顶栏汉堡菜单，支持点击展开/收起和外部关闭</span>
+                </li>
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>修复加载进度条：从容器的左侧移至屏幕最右侧（现改为严格靠左对齐）</span>
+                </li>
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>修复进度条与百分比不同步问题，确保视觉进度与真实加载进度一致</span>
+                </li>
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>优化移动端响应式样式，提升小屏设备体验</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="rrz-divider"></div>
+
+            <!-- v1.0.9 -->
+            <div class="rrz-reveal" data-rrz-variant="right" data-rrz-delay="240">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="rrz-version-tag">v1.0.9 · 2026-08-09</span>
+              </div>
+              <ul class="space-y-2">
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>功能完善 & Bug 修复</span>
+                </li>
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>贡献者名单中 HHmcME 标注为'网站建造者'</span>
+                </li>
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>加载进度条紧贴屏幕左侧，贯穿全屏高度 (0 → 100vh)</span>
+                </li>
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>百分比数字跟随进度点从上向下移动</span>
+                </li>
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>修复音乐播放器暂停 Bug：点击暂停不再重新播放，支持继续播放</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="rrz-divider"></div>
+
+            <!-- v1.0.8 -->
+            <div class="rrz-reveal" data-rrz-variant="right" data-rrz-delay="360">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="rrz-version-tag">v1.0.8 · 2026-08-08</span>
+              </div>
+              <ul class="space-y-2">
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>性能优化</span>
+                </li>
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>优化加载动画性能</span>
+                </li>
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>精简代码体积</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="rrz-divider"></div>
+
+            <!-- v1.0.7 -->
+            <div class="rrz-reveal" data-rrz-variant="right" data-rrz-delay="480">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="rrz-version-tag">v1.0.7 · 2026-08-07</span>
+              </div>
+              <ul class="space-y-2">
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>加载动画重构</span>
+                </li>
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>重构加载页面动画，移除 Logo 图标，改为屏幕左侧竖向进度条设计</span>
+                </li>
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>进度条从顶部向下延伸，右侧实时显示百分比数值（0% → 100%）</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="rrz-divider"></div>
+
+            <!-- v1.0.6 -->
+            <div class="rrz-reveal" data-rrz-variant="right" data-rrz-delay="600">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="rrz-version-tag">v1.0.6 · 2026-08-06</span>
+              </div>
+              <ul class="space-y-2">
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>新增贡献者页面</span>
+                </li>
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>新增贡献者名单页面，可在'关于'页面底部查看</span>
+                </li>
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>添加首位贡献者 HHmcME（群友专属音乐创作）</span>
+                </li>
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>修复背景音乐与歌曲播放器互斥问题</span>
+                </li>
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>修复播放器暂停按钮点击后重新播放的 Bug</span>
+                </li>
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>优化音频预加载策略，改为 preload='none'节省流量</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="rrz-divider"></div>
+
+            <!-- v1.0.5 -->
+            <div class="rrz-reveal" data-rrz-variant="right" data-rrz-delay="720">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="rrz-version-tag">v1.0.5 · 2026-08-05</span>
+              </div>
+              <ul class="space-y-2">
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>音乐播放器重构</span>
+                </li>
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>重写音乐播放器核心逻辑，彻底修复点击无响应问题</span>
+                </li>
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>移除音频预加载，改为点击播放时才加载，解决加载卡死问题</span>
+                </li>
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>优化悬浮动画表达，基于卡片自身 transform 浮动</span>
+                </li>
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>完善播放/暂停状态同步</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="rrz-divider"></div>
+
+            <!-- v1.0.4 -->
+            <div class="rrz-reveal" data-rrz-variant="right" data-rrz-delay="840">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="rrz-version-tag">v1.0.4 · 2026-08-04</span>
+              </div>
+              <ul class="space-y-2">
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>音乐页面全新改版</span>
+                </li>
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>音乐页面全新改版，采用网易云音乐风格设计</span>
+                </li>
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>新增播放/暂停按钮，支持点击切换播放状态</span>
+                </li>
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>实现歌曲互斥播放，播放新曲时自动暂停当前歌曲</span>
+                </li>
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>优化卡片悬停效果，添加渐变光晕和浮动动画</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="rrz-divider"></div>
+
+            <!-- v1.0.3 -->
+            <div class="rrz-reveal" data-rrz-variant="right" data-rrz-delay="960">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="rrz-version-tag">v1.0.3 · 2026-08-03</span>
+              </div>
+              <ul class="space-y-2">
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>新增音乐页面</span>
+                </li>
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>新增音乐页面，收录群友原创音乐作品</span>
+                </li>
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>首支单曲《RRZLIKE-YOU~》由 HHmcME 创作</span>
+                </li>
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>优化播放器交互，支持多歌曲互斥播放</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="rrz-divider"></div>
+
+            <!-- v1.0.2 -->
+            <div class="rrz-reveal" data-rrz-variant="right" data-rrz-delay="1080">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="rrz-version-tag">v1.0.2 · 2026-08-02</span>
+              </div>
+              <ul class="space-y-2">
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>背景音乐播放功能</span>
+                </li>
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>添加了音乐播放器，支持背景音乐播放/暂停</span>
+                </li>
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>定义了默认背景音乐曲目</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="rrz-divider"></div>
+
+            <!-- v1.0.1 -->
+            <div class="rrz-reveal" data-rrz-variant="right" data-rrz-delay="1200">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="rrz-version-tag">v1.0.1 · 2026-08-01</span>
+              </div>
+              <ul class="space-y-2">
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>特效增强</span>
+                </li>
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>加强了官网的特效与动画效果</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="rrz-divider"></div>
+
+            <!-- v1.0.0 -->
+            <div class="rrz-reveal" data-rrz-variant="right" data-rrz-delay="1320">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="rrz-version-tag">v1.0.0 · 2026-08-01</span>
+              </div>
+              <ul class="space-y-2">
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>初具人形</span>
+                </li>
+                <li class="flex items-start gap-2 text-base" style="color: var(--rrz-foreground);">
+                  <svg class="mt-1 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>初具人形 - 官网首个正式版本发布</span>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
@@ -499,6 +831,5 @@
   </button>
 
   <script src="assets/js/app.js?v=20260808" defer></script>
-  <script src="assets/js/load-history.js?v=20260808"></script>
 </body>
 </html>

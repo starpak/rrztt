@@ -307,8 +307,8 @@
   }
 
   /* ============================================================
-     回到顶部
-     ============================================================ */
+      回到顶部
+      ============================================================ */
   function initToTop() {
     var btn = document.getElementById("rrz-to-top");
     if (!btn) return;
@@ -319,40 +319,6 @@
     window.addEventListener("scroll", onScroll, { passive: true });
     btn.addEventListener("click", function () {
       window.scrollTo({ top: 0, behavior: "smooth" });
-    });
-  }
-
-  /* ============================================================
-     立绘点击彩蛋：rua 一下弹出可爱文字气泡
-     ============================================================ */
-  function initPortraitClick() {
-    var portrait = document.getElementById("rrz-portrait-click");
-    if (!portrait) return;
-    var words = [
-      "喵～rua到我啦！",
-      "嘿嘿嘿～好痒",
-      "呼噜呼噜～",
-      "尾巴要摇起来啦！",
-      "再摸摸我嘛～",
-      "主人你手好暖",
-      "(｡>ω<｡)",
-      "若若子被rua了！",
-    ];
-    portrait.addEventListener("click", function (e) {
-      var rect = portrait.getBoundingClientRect();
-      var pop = document.createElement("div");
-      pop.className = "rrz-rua-pop";
-      pop.textContent = words[Math.floor(Math.random() * words.length)];
-      // 鼠标点击位置，或居中
-      var x = e.clientX, y = e.clientY;
-      if (x < rect.left || x > rect.right || y < rect.top || y > rect.bottom) {
-        x = rect.left + rect.width / 2;
-        y = rect.top + rect.height * 0.4;
-      }
-      pop.style.left = x + "px";
-      pop.style.top = y + "px";
-      document.body.appendChild(pop);
-      setTimeout(function () { if (pop.parentNode) pop.parentNode.removeChild(pop); }, 1400);
     });
   }
 
@@ -436,7 +402,6 @@
     initSPA();
     initMobileMenu();
     initToTop();
-    initPortraitClick();
     initLiveStatus();
     initMusicPlayer();
     updateThemeColor();
