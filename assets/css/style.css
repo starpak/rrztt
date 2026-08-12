@@ -277,6 +277,8 @@ body.rrz-ready main { opacity: 1; transform: none; }
   opacity: 0;
   transform: translateY(28px) scale(.992);
   transition: opacity 200ms ease, transform 200ms ease;
+  position: relative;
+  z-index: 1;
 }
 .rrz-view.rrz-view-active {
   display: block;
@@ -287,6 +289,7 @@ body.rrz-ready main { opacity: 1; transform: none; }
   opacity: 0; transform: translateY(-24px) scale(1.01);
   pointer-events: none;
   position: absolute; inset: 0; width: 100%;
+  z-index: 0;
 }
 
 /* ============================================================
@@ -332,10 +335,13 @@ body.rrz-ready main { opacity: 1; transform: none; }
 .rrz-site-nav {
   backdrop-filter: blur(12px);
   background: color-mix(in srgb, var(--rrz-bg-base) 75%, transparent);
+  position: relative;
+  z-index: 100;
 }
 .rrz-link {
   position: relative; display: inline-flex; align-items: center; gap: 0.25rem;
   transition: opacity 200ms ease, transform 200ms ease, color 200ms ease;
+  z-index: 1;
 }
 .rrz-link:hover { opacity: 1; transform: translateY(-2px); }
 .rrz-link .rrz-chevron { transition: transform 200ms ease; }
@@ -348,6 +354,7 @@ body.rrz-ready main { opacity: 1; transform: none; }
   text-transform: uppercase;
   letter-spacing: 0.05em;
   transition: all 280ms ease;
+  z-index: 1;
 }
 .rrz-nav-link:hover {
   color: var(--rrz-accent-red) !important;
